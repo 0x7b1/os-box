@@ -1,4 +1,4 @@
-import React, {Component, PureComponent} from 'react';
+import React, { Component, PureComponent } from 'react';
 import Header, {
   Logo,
   Tray,
@@ -10,7 +10,7 @@ import Theme from '@jetbrains/ring-ui/components/global/theme';
 import Auth from '@jetbrains/ring-ui/components/auth/auth';
 import Footer from '@jetbrains/ring-ui/components/footer/footer';
 import hubLogo from '@jetbrains/logos/hub/hub.svg';
-import {Grid, Row, Col} from '@jetbrains/ring-ui/components/grid/grid';
+import { Grid, Row, Col } from '@jetbrains/ring-ui/components/grid/grid';
 import Dropdown from '@jetbrains/ring-ui/components/dropdown/dropdown';
 import PopupMenu from '@jetbrains/ring-ui/components/popup-menu/popup-menu';
 import Popup from '@jetbrains/ring-ui/components/popup/popup';
@@ -57,7 +57,7 @@ import {
 import Tag from '@jetbrains/ring-ui/components/tag/tag';
 import Button from '@jetbrains/ring-ui/components/button/button';
 import ButtonSet from '@jetbrains/ring-ui/components/button-set/button-set';
-import {SmartTabs, Tabs, Tab} from '@jetbrains/ring-ui/components/tabs/tabs';
+import { SmartTabs, Tabs, Tab } from '@jetbrains/ring-ui/components/tabs/tabs';
 import Input, {
   Size,
   Theme as ThemeI
@@ -98,7 +98,7 @@ const ListDescription = (
     </ButtonSet>
     <Dropdown
       anchor={
-        <Button icon={MoreOptionsIcon}/>
+        <Button icon={MoreOptionsIcon} />
         // <Button delayed>Options</Button>
         // <Button short>...</Button>
       }
@@ -106,10 +106,10 @@ const ListDescription = (
       <PopupMenu
         closeOnSelect
         data={[
-          {label: <Button icon={PinEmptyIcon}>Unpin</Button>},
-          {label: <Button icon={PencilIcon}>Edit</Button>},
-          {label: <Button icon={TrashIcon}>Remove</Button>},
-          {/*{label: <Button icon={RemovedIcon}>Hide</Button>},*/}
+          { label: <Button icon={PinEmptyIcon}>Unpin</Button> },
+          { label: <Button icon={PencilIcon}>Edit</Button> },
+          { label: <Button icon={TrashIcon}>Remove</Button> },
+          {/*{label: <Button icon={RemovedIcon}>Hide</Button>},*/ }
         ]}
       />
     </Dropdown>
@@ -335,7 +335,7 @@ class ClearableInput extends PureComponent {
   };
 
   render() {
-    const {defaultValue, ...restProps} = this.props; // eslint-disable unused-vars
+    const { defaultValue, ...restProps } = this.props; // eslint-disable unused-vars
     return (
       <Input
         value={this.state.text}
@@ -358,7 +358,7 @@ export default class AppRoot extends Component {
     // clientId: <your client id here>
     serverUri: 'https://hub.jetbrains.com' // replace with your Hub server
   });
-  state = {selected: 'first'};
+  state = { selected: 'first' };
 
   render() {
     const Comp = props => <a {...props}>This is component</a>;
@@ -369,7 +369,7 @@ export default class AppRoot extends Component {
           <a href="/">
             {/*<Logo className="logo" glyph={hubLogo} size={Logo.Size.Size40} />*/}
             <Logo className="logo" glyph={ArtifactsIcon}
-                  size={Logo.Size.Size40}/>
+              size={Logo.Size.Size40} />
           </a>
           <Tray>
             {/*             <Group>
@@ -382,9 +382,9 @@ export default class AppRoot extends Component {
                 top={-17}
                 closeOnSelect
                 data={[
-                  {label: <Button text>Profile</Button>},
-                  {label: <Button text>Settings</Button>},
-                  {label: <Button text>Log Out</Button>}
+                  { label: <Button text>Profile</Button> },
+                  { label: <Button text>Settings</Button> },
+                  { label: <Button text>Log Out</Button> }
                 ]}
               />
             </Dropdown>
@@ -419,17 +419,17 @@ export default class AppRoot extends Component {
                     <Text info>Ubuntu 18.04</Text>
                     <Text>|</Text>
                     <Text info>Last update 4 months ago</Text>
-                    <ButtonSet style={{float: 'right'}}>
+                    <ButtonSet style={{ float: 'right' }}>
                       <Button icon={ReviewersGraphIcon}>Share / Embed</Button>
                       <Button icon={StarFilledIcon} primary>Favorited</Button>
                       {/*<Button icon={StarEmptyIcon}>Favorite</Button>*/}
                     </ButtonSet>
                   </Group>
-                  <br/>
-                  <br/>
+                  <br />
+                  <br />
                   <Tabs
                     selected={this.state.selected}
-                    onSelect={selected => this.setState({selected})}
+                    onSelect={selected => this.setState({ selected })}
                   >
                     <Tab
                       id="thirddd"
@@ -437,14 +437,14 @@ export default class AppRoot extends Component {
                     >
                       <Group>
                         <Tag readOnly angled><Link pseudo
-                                                   href="#hash">Ubuntu</Link></Tag>
+                          href="#hash">Ubuntu</Link></Tag>
                         <Tag readOnly angled><Link pseudo
-                                                   href="#hash">i3wm</Link></Tag>
+                          href="#hash">i3wm</Link></Tag>
                         <Tag readOnly angled><Link pseudo href="#hash">Web
                           Development</Link></Tag>
                       </Group>
-                      <br/>
-                      <br/>
+                      <br />
+                      <br />
                       <Island className="limited-island" narrow>
                         <HeaderI border>
                           Readme <Button icon={PencilIcon}>Edit</Button>
@@ -466,7 +466,7 @@ export default class AppRoot extends Component {
                     </Tab>
                     <Tab
                       id="exp"
-                      title="Experimental"
+                      title="Configurations"
                     >
                       <List
                         data={[
@@ -576,28 +576,28 @@ export default class AppRoot extends Component {
                         <Content>
                           <List
                             data=
-                              {[
-                                {
-                                  label: 'Files (2)',
-                                  rgItemType: List.ListProps.Type.TITLE
-                                },
-                                {
-                                  label:
-                                    <Group><Text>{'google-chrome-stable_current_amd64.deb'}</Text><Text
-                                      info>{'123MB'}</Text></Group>,
-                                  rgItemType: List.ListProps.Type.ITEM,
-                                  description: <Button
-                                    icon={DownloadIcon}>Download</Button>
-                                },
-                                {
-                                  label:
-                                    <Group><Text>{'clion_2.3.3.deb'}</Text><Text
-                                      info>{'3MB'}</Text></Group>,
-                                  rgItemType: List.ListProps.Type.ITEM,
-                                  description: <Button
-                                    icon={DownloadIcon}>Download</Button>
-                                }
-                              ]}
+                            {[
+                              {
+                                label: 'Files (2)',
+                                rgItemType: List.ListProps.Type.TITLE
+                              },
+                              {
+                                label:
+                                  <Group><Text>{'google-chrome-stable_current_amd64.deb'}</Text><Text
+                                    info>{'123MB'}</Text></Group>,
+                                rgItemType: List.ListProps.Type.ITEM,
+                                description: <Button
+                                  icon={DownloadIcon}>Download</Button>
+                              },
+                              {
+                                label:
+                                  <Group><Text>{'clion_2.3.3.deb'}</Text><Text
+                                    info>{'3MB'}</Text></Group>,
+                                rgItemType: List.ListProps.Type.ITEM,
+                                description: <Button
+                                  icon={DownloadIcon}>Download</Button>
+                              }
+                            ]}
                             shortcuts
                           />
                         </Content>
@@ -709,23 +709,23 @@ export default class AppRoot extends Component {
                           disabled
                         />
                         <Toggle defaultChecked>Allow Comments</Toggle>
-                        <br/>
-                        <br/>
+                        <br />
+                        <br />
                         <Toggle>Private Env</Toggle>
                         <Panel>
                           <Button blue>{'Apply changes'}</Button>
                           <Button>{'Cancel'}</Button>
                         </Panel>
                       </form>
-                      <br/>
+                      <br />
                       <h3>Advanced</h3>
                       <Button icon={DownloadIcon}>Export Data as CSV</Button>
-                      <br/>
+                      <br />
                       <Button icon={DownloadIcon}>Export Data as JSON</Button>
-                      <br/>
-                      <br/>
+                      <br />
+                      <br />
                       <Button icon={RemoveIcon}
-                              danger>{'Delete Account'}</Button>
+                        danger>{'Delete Account'}</Button>
                     </Tab>
                     <Tab
                       id="disabled__"
@@ -737,7 +737,7 @@ export default class AppRoot extends Component {
                         // email: '@0x7b1',
                         avatarUrl: `/api/rest/avatar/default?username=Jet%20Brains`,
                         href: '#'
-                      }}/>
+                      }} />
                     </Tab>
                   </Tabs>
                 </div>
