@@ -1,29 +1,21 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col } from '@jetbrains/ring-ui/components/grid/grid';
-import List from '@jetbrains/ring-ui/components/list/list';
-import Text from '@jetbrains/ring-ui/components/text/text';
-import Group from '@jetbrains/ring-ui/components/group/group';
 
 import EnvList from './env-list';
 import EnvInfo from './env-info';
 import AppHeader from './app-header';
 
-
-const listDataGeneral = [
+const envList = [
   {
-    label: 'Desktop Computer',
-    rgItemType: List.ListProps.Type.ITEM,
-    details: 'Ubuntu 18.04'
+    name: 'Desktop Computer',
+    os: 'Ubuntu 18.04',
+    dateUpdate: 'Last update 4 months ago',
   },
   {
-    label: 'Mobile Phone',
-    rgItemType: List.ListProps.Type.ITEM,
-    details: (
-      <Group>
-        <Text info>iOS 12.3.2</Text>
-      </Group>
-    )
-  }
+    name: 'Mobile Phone',
+    os: 'iOS 13.0.0',
+    dateUpdate: 'Last update 4 months ago',
+  },
 ];
 
 const userCardInfo = {
@@ -32,6 +24,20 @@ const userCardInfo = {
   avatarUrl: 'https://avatars0.githubusercontent.com/u/2180529?s=460&v=4',
 };
 
+const envSelectedData = {
+  name: 'Desktop Computer',
+  os: 'Ubuntu 18.04',
+  dateUpdate: 'Last update 4 months ago',
+};
+
+const tags = [
+  {
+    name: 'Ubuntu',
+  },
+  {
+    name: 'i3wm',
+  },
+];
 
 export default class AppRoot extends Component {
   render() {
@@ -44,10 +50,13 @@ export default class AppRoot extends Component {
               <Col xs>
                 <EnvList
                   userCardInfo={userCardInfo}
-                  listDataGeneral={listDataGeneral} />
+                  envList={envList} />
               </Col>
               <Col xs={9}>
-                <EnvInfo />
+                <EnvInfo
+                  envData={envSelectedData}
+                  tags={tags}
+                />
               </Col>
             </Row>
           </Grid>
