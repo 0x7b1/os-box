@@ -17,17 +17,32 @@ import TabSettings from './tab-settings';
 import TabHistory from './tab-history';
 import TabFavorites from './tab-favorites';
 
+const envDescription = `
+Lorem Ipsum is simply dummy text of the printing and
+typesetting
+industry.Lorem Ipsum has been the industry's standard
+dummy text ever
+since the 1500s, when an unknown printer took a galley
+of type and
+            scrambled it to make a type specimen book.It has
+survived not only five
+centuries, but also the leap into electronic
+typesetting, remaining
+essentially unchanged.`;
+
 export default class EnvInfo extends Component {
   state = { selected: 'info' };
 
   render() {
+    const { envData, tags } = this.props;
+
     return (
       <div className="cell">
-        <h2>Desktop Computer</h2>
+        <h2>{envData.name}</h2>
         <Group>
-          <Text info>Ubuntu 18.04</Text>
+          <Text info>{envData.os}</Text>
           <Text>|</Text>
-          <Text info>Last update 4 months ago</Text>
+          <Text info>{envData.dateUpdate}</Text>
           <ButtonSet style={{ float: 'right' }}>
             <Button icon={ReviewersGraphIcon}>Share / Embed</Button>
             <Button icon={StarFilledIcon} primary>Favorited</Button>
@@ -40,7 +55,10 @@ export default class EnvInfo extends Component {
           onSelect={selected => this.setState({ selected })}
         >
           <Tab id="info" title="Info">
-            <TabInfo />
+            <TabInfo
+              envDescription={envDescription}
+              tags={tags}
+            />
           </Tab>
           <Tab id="configurations" title="Configurations">
             <TabConfigurations />
