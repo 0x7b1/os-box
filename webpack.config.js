@@ -1,4 +1,4 @@
-const {join, resolve} = require('path');
+const { join, resolve } = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const variables = require('@jetbrains/ring-ui/extract-css-vars');
@@ -15,7 +15,7 @@ ringUiWebpackConfig.loaders.svgSpriteLoader.include.push(
 );
 
 const webpackConfig = () => ({
-  entry: `${componentsPath}/app/app.js`,
+  entry: `${componentsPath}/app/index.js`,
   resolve: {
     mainFields: ['module', 'browser', 'main'],
     alias: {
@@ -38,12 +38,12 @@ const webpackConfig = () => ({
         include: componentsPath,
         use: [
           'style-loader',
-          {loader: 'css-loader'},
+          { loader: 'css-loader' },
           {
             loader: 'postcss-loader',
             options: {
               config: {
-                ctx: {variables}
+                ctx: { variables }
               }
             }
           }
