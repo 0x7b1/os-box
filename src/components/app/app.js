@@ -19,8 +19,8 @@ const envList = [
 ];
 
 const userCardInfo = {
-  name: '0x7b1',
-  login: '2 envs | 4 favorites',
+  name: 'John Smith',
+  login: 'Developer at Veriff',
   avatarUrl: 'https://avatars0.githubusercontent.com/u/2180529?s=460&v=4',
 };
 
@@ -58,13 +58,13 @@ export default class AppRoot extends Component {
         <div className="app-content">
           <Grid data-test="distribution">
             <Row around="xs">
-              <Col xs>
+              <Col xs={2} >
                 <EnvList
                   userCardInfo={userCardInfo}
                   envList={envList}
                 />
               </Col>
-              <Col xs={9}>
+              <Col xs={10}>
                 <EnvInfo
                   envData={envSelectedData}
                   tags={tags}

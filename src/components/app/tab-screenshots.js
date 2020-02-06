@@ -28,7 +28,7 @@ export default function TabScreenshots(props) {
             },
             {
               label:
-                <Group><Text>{'google-chrome-stable_current_amd64.deb'}</Text><Text
+                <Group><Text>{'gcs_amd64.deb'}</Text><Text
                   info>{'123MB'}</Text></Group>,
               rgItemType: List.ListProps.Type.ITEM,
               description: <Button

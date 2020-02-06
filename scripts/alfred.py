@@ -2,10 +2,20 @@
 
 import sys
 
+import pyrebase
+
+config = {
+  "apiKey": "AIzaSyBVnVgl3YWw6ppY3T-lfRFnHTAkCT8eHto",
+  "authDomain": "osbs-dd402.firebaseapp.com",
+  "databaseURL": "https://osbs-dd402.firebaseio.com",
+  "storageBucket": "osbs-dd402.appspot.com"
+}
+
+firebase = pyrebase.initialize_app(config)
 # Check Python version
 if sys.version_info[0] < 3:
 
-    print('You have invoked Alfred with Python 2. Alfred must be run with Python 3.')
+    print('You have invoked OSBS with Python 2. OSBS must be run with Python 3.')
     sys.exit()
 
 else:
@@ -142,7 +152,7 @@ def checkPackage(package):
     else:
         return False
 
-    
+
 def getRepoList():
 
     repoList = []
@@ -166,7 +176,7 @@ def notify(message):
 
     userID = runCmd(['id', '-u', os.environ['SUDO_USER']]).stdout.replace('\n', '')
 
-    runCmd(['sudo', '-u', os.environ['SUDO_USER'], 'DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/{}/bus'.format(userID), 
+    runCmd(['sudo', '-u', os.environ['SUDO_USER'], 'DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/{}/bus'.format(userID),
             'notify-send', '-i', 'utilities-terminal', 'Alfred', message])
 
 
@@ -178,7 +188,7 @@ def waitForDpkgLock():
 
         dpkgLock = runCmd(['fuser', '/var/lib/dpkg/lock'])
         aptLock = runCmd(['fuser', '/var/lib/apt/lists/lock'])
-        
+
         if dpkgLock.stdout != '' or aptLock.stdout !='':
             time.sleep(3)
             tries += 1
@@ -202,7 +212,7 @@ class Zenity:
 
         while True:
 
-            getPasswordCmd = runCmd(['zenity', '--password', '--title=Alfred', '--window-icon=alfred.png'])
+            getPasswordCmd = runCmd(['zenity', '--password', '--title=OSBS', '--window-icon=alfred.png'])
 
             if getPasswordCmd.succeeded:
 
@@ -215,10 +225,10 @@ class Zenity:
 
                 else:
 
-                    runCmd(['zenity', 
-                            '--info', 
-                            '--width=200', 
-                            '--title=Alfred', 
+                    runCmd(['zenity',
+                            '--info',
+                            '--width=200',
+                            '--title=OSBS',
                             '--text=Wrong password, try again'])
 
             else:
@@ -244,9 +254,9 @@ class Zenity:
         args.append('--width={}'.format(width))
         args.append('--window-icon=alfred.png')
 
-        process = subprocess.Popen(args, 
-                                   stdin=subprocess.PIPE, 
-                                   stdout=subprocess.PIPE, 
+        process = subprocess.Popen(args,
+                                   stdin=subprocess.PIPE,
+                                   stdout=subprocess.PIPE,
                                    stderr=subprocess.PIPE)
 
         def update(message='', percent=0):
@@ -266,9 +276,9 @@ class Zenity:
     @staticmethod
     def error(message):
 
-        runCmd(['zenity', 
-                '--error', 
-                '--title=Alfred', 
+        runCmd(['zenity',
+                '--error',
+                '--title=OSBS',
                 '--height=100',
                 '--width=500',
                 '--window-icon=alfred.png',
@@ -283,7 +293,7 @@ class Zenity:
                 '--checklist',
                 '--height=720',
                 '--width=1000',
-                '--title=Alfred',
+                '--title=OSBS',
                 '--window-icon=alfred.png',
                 '--text=Select tasks to perform:',
                 '--column=Selection',
@@ -298,9 +308,9 @@ class Zenity:
     @staticmethod
     def info(message):
 
-        runCmd(['zenity', 
-                '--info', 
-                '--title=Alfred',
+        runCmd(['zenity',
+                '--info',
+                '--title=OSBS',
                 '--window-icon=alfred.png',
                 '--height=100',
                 '--width=200',
@@ -310,9 +320,9 @@ class Zenity:
     @staticmethod
     def question(message, height=100, width=200):
 
-        question = runCmd(['zenity', 
-                           '--question', 
-                           '--title=Alfred',
+        question = runCmd(['zenity',
+                           '--question',
+                           '--title=OSBS',
                            '--window-icon=alfred.png',
                            '--height={}'.format(height),
                            '--width={}'.format(width),
@@ -320,7 +330,7 @@ class Zenity:
 
         return question.succeeded
 
-    
+
     @staticmethod
     def textInfo(message):
 
@@ -329,11 +339,11 @@ class Zenity:
                 '--text-info',
                 '--height=700',
                 '--width=800',
-                '--title=Alfred',
+                '--title=OSBS',
                 '--window-icon=alfred.png'],
                 stdin=data)
 
-    
+
     @staticmethod
     def list(message, elements):
 
@@ -341,10 +351,10 @@ class Zenity:
                 '--list',
                 '--height=500',
                 '--width=500',
-                '--title=Alfred',
+                '--title=OSBS',
                 '--window-icon=alfred.png',
                 '--text={}'.format(message),
-                '--hide-header', 
+                '--hide-header',
                 '--column', 'Tasks with errors']
 
         cmd.extend(elements)
@@ -388,7 +398,7 @@ class Alfred:
             #         break
 
         if not supportedDistro:
-            message = "This is not an Ubuntu or Ubuntu derivative distro. You can't run Alfred on this system."
+            message = "This is not an Ubuntu or Ubuntu derivative distro. You can't run OSBS on this system."
 
             if zenity:
                 Zenity.error(message)
@@ -401,7 +411,7 @@ class Alfred:
         arch = self.runAndLogCmd(['uname', '-m'])
 
         if arch.stdout != 'x86_64\n':
-            message = "This is not a 64-bit system. You can't run Alfred on this system."
+            message = "This is not a 64-bit system. You can't run OSBS on this system."
 
             if zenity:
                 Zenity.error(message)
@@ -414,7 +424,7 @@ class Alfred:
         lock = runCmd(['fuser', '/var/lib/dpkg/lock'])
 
         if lock.stdout != '':
-            message = 'Another program is installing or updating packages. Please wait until this process finishes and then launch Alfred again.'
+            message = 'Another program is installing or updating packages. Please wait until this process finishes and then launch OSBS again.'
 
             if zenity:
                 Zenity.error(message)
@@ -427,7 +437,7 @@ class Alfred:
         ping = self.runAndLogCmd(['ping', '-c', '1', 'google.com'])
 
         if not ping.succeeded:
-            message = 'There is no connection to the Internet. Please connect and then launch Alfred again.'
+            message = 'There is no connection to the Internet. Please connect and then launch OSBS again.'
 
             if zenity:
                 Zenity.error(message)
@@ -457,14 +467,14 @@ class Alfred:
         for i in range(len(self.recipes)):
             self.recipes[i]['selected'] = False
 
-    
+
     def show(self):
 
         while True:
 
             # Build table
             tableData = []
-        
+
             for recipe in self.recipes:
 
                 if recipe['selected']:
@@ -475,7 +485,7 @@ class Alfred:
                 tableData.append(select)
                 tableData.append(recipe['name'])
                 tableData.append(recipe['description'])
-            
+
 
             table = Zenity.table(tableData)
 
@@ -513,7 +523,7 @@ class Alfred:
 
         # Get confirmation
         message = 'The selected tasks will be performed now. '
-        message += "You won't be able to cancel this operation once started.\n\n"       
+        message += "You won't be able to cancel this operation once started.\n\n"
         message += 'Are you sure you want to continue?'
 
         while True:
@@ -576,9 +586,9 @@ class Alfred:
                 packages.pop(i)
 
         # Create progress bar
-        updateBar = Zenity.progressBar(pulsating=True, 
-                                       noCancel=True, 
-                                       title='Alfred',
+        updateBar = Zenity.progressBar(pulsating=True,
+                                       noCancel=True,
+                                       title='OSBS',
                                        text='Processing tasks')
 
         try:
@@ -685,7 +695,7 @@ class Alfred:
                             break
 
                 Zenity.list('The following tasks ended with errors and could not be completed:', self.errors)
-                
+
                 if len(log) < 120000:
                     Zenity.textInfo('Ooops, some errors happened (sorry about that).\n\nTo help us improve Alfred, ' +
                                     'please copy the following error log and open a new issue with it at ' +
@@ -711,7 +721,7 @@ class Alfred:
                 with open(self.logFile, 'a') as f:
                     f.write(100 * '-' + '\n')
                     f.write('LOCKED /var/lib/dpkg/lock or /var/lib/apt/lists/lock\n')
-                    Zenity.error('Another program is installing or updating packages. Please wait until this process finishes and then launch Alfred again.')
+                    Zenity.error('Another program is installing or updating packages. Please wait until this process finishes and then launch OSBS again.')
                     sys.exit()
 
         with open(self.logFile, 'a') as f:
@@ -737,7 +747,7 @@ class Alfred:
 
 
 def main():
-    
+
     # Check root privileges
     if os.geteuid() == 0:
 
@@ -751,7 +761,7 @@ def main():
         if checkPackage('zenity'):
 
             runCmd(['sudo', 'python3', sys.argv[0]], stdin=Zenity.password())
-        
+
         else:
 
             import getpass
