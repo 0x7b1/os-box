@@ -34,7 +34,7 @@ let db = Firebase.firestore();
         .catch(function(error) {
           console.error("Error writing document: ", error);
         });
-        */
+*/
 
 const appEl = document.querySelector(".app-root");
 const rootEl = document.createElement("div");

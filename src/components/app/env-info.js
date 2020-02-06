@@ -17,19 +17,6 @@ import TabSettings from './tab-settings';
 import TabHistory from './tab-history';
 import TabFavorites from './tab-favorites';
 
-const envDescription = `
-Lorem Ipsum is simply dummy text of the printing and
-typesetting
-industry.Lorem Ipsum has been the industry's standard
-dummy text ever
-since the 1500s, when an unknown printer took a galley
-of type and
-            scrambled it to make a type specimen book.It has
-survived not only five
-centuries, but also the leap into electronic
-typesetting, remaining
-essentially unchanged.`;
-
 export default class EnvInfo extends Component {
   state = { selected: 'info' };
 
@@ -56,22 +43,22 @@ export default class EnvInfo extends Component {
         >
           <Tab id="info" title="Info">
             <TabInfo
-              envDescription={envDescription}
+              envDescription={envData.readme}
               tags={tags}
             />
           </Tab>
-          <Tab id="configurations" title="Configurations">
+          {/* <Tab id="configurations" title="Configurations">
             <TabConfigurations />
-          </Tab>
+          </Tab> */}
           <Tab id="details" title="Details">
             <TabDetails />
           </Tab>
-          <Tab id="screenshots" title="Screenshots">
+          {/* <Tab id="screenshots" title="Screenshots">
             <TabScreenshots />
-          </Tab>
-          <Tab id="history" title="History">
+          </Tab> */}
+          {/* <Tab id="history" title="History">
             <TabHistory />
-          </Tab>
+          </Tab> */}
           <Tab id="favorites" title="Favorites">
             <TabFavorites />
           </Tab>

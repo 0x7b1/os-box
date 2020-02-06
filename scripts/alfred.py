@@ -382,10 +382,10 @@ class Alfred:
         with open('/etc/os-release','r') as f:
             lines = f.readlines()
 
-            for line in lines:
-                if line == 'ID_LIKE=ubuntu\n' or line == 'ID_LIKE=debian\n' or line == 'ID=debian\n':
-                    supportedDistro = True
-                    break
+            # for line in lines:
+            #     if line == 'ID_LIKE=ubuntu\n' or line == 'ID_LIKE=debian\n' or line == 'ID=debian\n':
+            #         supportedDistro = True
+            #         break
 
         if not supportedDistro:
             message = "This is not an Ubuntu or Ubuntu derivative distro. You can't run Alfred on this system."
