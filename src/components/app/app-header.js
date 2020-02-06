@@ -3,14 +3,18 @@ import Theme from '@jetbrains/ring-ui/components/global/theme';
 import Header, { Logo, Tray } from '@jetbrains/ring-ui/components/header/header';
 import Dropdown from '@jetbrains/ring-ui/components/dropdown/dropdown';
 import Button from '@jetbrains/ring-ui/components/button/button';
-import { ArtifactsIcon, UserIcon } from '@jetbrains/ring-ui/components/icon';
+import {
+  ArtifactsIcon,
+  PinFilledIcon,
+  UserIcon
+} from '@jetbrains/ring-ui/components/icon';
 import PopupMenu from '@jetbrains/ring-ui/components/popup-menu/popup-menu';
 import Group from '@jetbrains/ring-ui/components/group/group';
 
 export default class AppHeader extends Component {
   renderLoggedInfo() {
     return (
-      <Dropdown anchor={<Button icon={UserIcon}>{'0x7b1'}</Button>}>
+      <Dropdown anchor={<Button id="userIcon" icon={UserIcon} >{'John Smith'} </Button>}>
         <PopupMenu
           top={-17}
           closeOnSelect
@@ -36,12 +40,13 @@ export default class AppHeader extends Component {
   render() {
     const { isLogged } = this.props;
     return (
-      <Header className="header" theme={Theme.LIGHT}>
+      <Header className="header">
         <a href="/">
           <Logo
             className="logo"
             glyph={ArtifactsIcon}
-            size={Logo.Size.Size40}
+            size={Logo.Size.Size32}
+            color={ArtifactsIcon.Color.WHITE}
           />
         </a>
         <Tray>
@@ -55,3 +60,4 @@ export default class AppHeader extends Component {
     );
   }
 }
+
