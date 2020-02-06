@@ -19,12 +19,10 @@ export default class EnvList extends Component {
     return (
       <div className="cell">
         <UserCard user={userCardInfo} />
-        <br />
-        {/* <h2>0x7b1</h2> */}
+        <br/>
         <List
           data={this.renderEnvList()}
           shortcuts
-          onSelect={console.log}
         />
       </div>
     );
