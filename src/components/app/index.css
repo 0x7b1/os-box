@@ -1,6 +1,9 @@
 @import "@jetbrains/ring-ui/components/global/variables.css";
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans+Condensed&display=swap');
 
 html,
+
+
 
 .app-root {
   margin: 0;
@@ -8,7 +11,7 @@ html,
 
   background: var(--ring-content-background-color);
 
-  font-family: var(--ring-font-family);
+  font-family: "Fira Sans Condensed";
 
   font-size: 20px;
 
@@ -32,11 +35,63 @@ html,
   padding-left: 1.5rem;
 }
 
-.col-xs_86a {
-  padding-top: 1.1rem;
+.col-xs-2_358 {
+  padding-top: 20px;
 }
 
 .text_833 {
-  font-weight: bold;
+  font-family: "Fira Sans Condensed";
   color: black;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.label_153 {
+  font-family: "Fira Sans Condensed";
+  font-size: 20px;
+
+}
+
+.scrollableWrapper_51d {
+  font-family: "Fira Sans Condensed";
+  font-size: 17px;
+
+}
+
+.titles_818 {
+  font-family: "Fira Sans Condensed";
+  font-size: 20px;
+}
+
+.button_62d {
+  font-family: "Fira Sans Condensed";
+  font-size: 15px;
+}
+
+.col-xs-9_572 {
+  padding-right: 2rem;
+  padding-top: 6px;
+}
+
+.bash {
+  font-family: "Fira Sans Condensed";
+  font-size: 30px;
+}
+
+.userInformation_b84 {
+  font-family: "Fira Sans Condensed";
+  font-size: 15px;
+}
+
+.userName_e8c {
+  font-size: 20px;
+}
+
+.content_c14 {
+  font-family: "Fira Sans Condensed";
+  font-size: 17px;
+}
+
+.icon_ce4 {
+  padding-bottom: 5px;
 }
