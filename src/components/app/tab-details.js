@@ -19,15 +19,19 @@ export default class TabDetails extends Component {
     selectedScriptIndex: null,
   };
 
-  renderPackageList(packagesList) {
+  renderPackageList(packagesList, selectedOS) {
+    const osType = constants.box.osList[selectedOS].type;
+    const packages = constants[`packages_${osType}`];
+
     return packagesList.map((packageId, id) => (
       <Col key={id} xs={2}>
         <Island>
           <UserCard
             user={{
-              name: constants.packages[packageId].name,
-              avatarUrl: constants.packages[packageId].icon,
-              login: constants.packages[packageId].description,
+              name: packages[packageId].name,
+              name: packages[packageId].name,
+              avatarUrl: packages[packageId].icon,
+              login: `${packages[packageId].description.slice(0, 20)}...`,
             }}
           />
         </Island>
@@ -58,9 +62,6 @@ export default class TabDetails extends Component {
   renderScriptPreview(scriptFilesList) {
     const { selectedScriptIndex } = this.state;
     const filePreviewData = scriptFilesList[selectedScriptIndex];
-    console.log('scriptFilesList', scriptFilesList);
-    console.log('selectedScriptIndex', selectedScriptIndex);
-    console.log('filePreviewData', filePreviewData);
 
     return (
       <Code
@@ -75,13 +76,14 @@ export default class TabDetails extends Component {
       onAddNewPackage,
       packagesList = [],
       scriptFilesList = [],
+      selectedOS,
     } = this.props;
 
     return (
       <>
         <Grid data-test="distribution">
           <Row>
-            {this.renderPackageList(packagesList)}
+            {this.renderPackageList(packagesList, selectedOS)}
             <Col xs={2}>
               <UserCard user={{
                 name: <Link onClick={onAddNewPackage}>Add Package</Link>,
