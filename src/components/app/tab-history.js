@@ -17,7 +17,7 @@ export default function TabFavorites(props) {
   return (
     <>
       <Dialog
-        show={true}
+        show={false}
         onCloseAttempt={() => { }}
         trapFocus
         autoFocusFirst={true}
@@ -81,6 +81,22 @@ export default function TabFavorites(props) {
           <Button>Cancel</Button>
         </Panel>
       </Dialog>
+      <List
+        maxHeight={400}
+        data={[
+          {
+            label: 'Change',
+            rgItemType: List.ListProps.Type.ITEM,
+            description: 'Long long lo',
+          },
+          {
+            label: 'Box creation',
+            rgItemType: List.ListProps.Type.ITEM,
+            description: '02/02/2020',
+          },
+        ]}
+        compact
+      />
     </>
   );
 }

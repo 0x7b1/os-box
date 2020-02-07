@@ -4,8 +4,17 @@ import Tag from '@jetbrains/ring-ui/components/tag/tag';
 import Link from '@jetbrains/ring-ui/components/link/link';
 import Island, { Content } from '@jetbrains/ring-ui/components/island/island';
 
+const tags = [
+  {
+    name: 'Ubuntu',
+  },
+  {
+    name: 'i3wm',
+  },
+];
+
 export default function TabInfo(props) {
-  const { envDescription, tags } = props;
+  const { envDescription } = props;
 
   return (
     <>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col } from '@jetbrains/ring-ui/components/grid/grid';
+import Heading, { H1, H2, H3, H4 } from '@jetbrains/ring-ui/components/heading/heading';
 
 import EnvList from './env-list';
 import EnvInfo from './env-info';
@@ -7,27 +8,33 @@ import AppHeader from './app-header';
 
 const envList = [
   {
-    name: 'Desktop Computer',
+    name: 'My Phone',
+    os: 'iOS 13.0.0',
+    dateUpdate: 'Last update 4 months ago',
+  },
+  {
+    name: 'Pipedrive PC',
     os: 'Ubuntu 18.04',
     dateUpdate: 'Last update 4 months ago',
   },
   {
-    name: 'Mobile Phone',
-    os: 'iOS 13.0.0',
+    name: 'Home Desktop',
+    os: 'FreeBSD',
     dateUpdate: 'Last update 4 months ago',
   },
 ];
 
 const userCardInfo = {
-  name: 'John Smith',
-  login: 'Developer at Veriff',
+  name: <H3>John Smith</H3>,
+  login: '@0x7b1',
+  email: 'Developer at Veriff',
   avatarUrl: 'https://avatars0.githubusercontent.com/u/2180529?s=460&v=4',
 };
 
 const envSelectedData = {
-  name: 'Desktop Computer',
-  os: 'Ubuntu 18.04',
-  dateUpdate: 'Last update 4 months ago',
+  name: 'My Phone',
+  os: 'iOS 13.0.0',
+  dateUpdate: 'Last update 2 days ago',
   readme: `
     Lorem Ipsum is simply dummy text of the printing and
     typesetting

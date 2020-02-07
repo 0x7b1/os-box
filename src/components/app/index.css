@@ -2,9 +2,6 @@
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans+Condensed&display=swap');
 
 html,
-
-
-
 .app-root {
   margin: 0;
   padding: 0;
@@ -13,7 +10,7 @@ html,
 
   font-family: "Fira Sans Condensed";
 
-  font-size: 20px;
+  /* font-size: 18px; */
 
   line-height: var(--ring-line-height);
 }
@@ -24,7 +21,7 @@ html,
 }
 
 .header {
-  background-color: rgba(47, 50, 64, 0.98);
+  background-color: #412fb3;
 }
 
 #userIcon {
