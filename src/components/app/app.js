@@ -28,10 +28,10 @@ export default class AppRoot extends Component {
     screenshotPreviewIndex: null,
     selectedBoxIndex: 0,
     userData: {
-      name: "John Smith",
+      name: "Martin Starr",
       username: "@0x7b1",
       info: "Developer at Pipedrive",
-      avatar: "https://avatars0.githubusercontent.com/u/2180529?s=460&v=4"
+      avatar: "https://i.ibb.co/ykR6ss7/gilfoyle.jpg"
     },
     boxList: [
       {
@@ -39,13 +39,7 @@ export default class AppRoot extends Component {
         os: constants.box.osList.ANDROID.id,
         isPrivate: false,
         starsCount: 10,
-        packages: [
-          'INSTAGRAM',
-          'MESSENGER',
-          'SHAZAM',
-          'SNAPCHAT',
-          'TIKTOK',
-        ],
+        packages: ["INSTAGRAM", "MESSENGER", "SHAZAM", "SNAPCHAT", "TIKTOK"],
         scriptFiles: [
           {
             filename: "i3config0.sh",

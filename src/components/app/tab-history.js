@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import List from '@jetbrains/ring-ui/components/list/list';
+import React, { Component } from "react";
+import List from "@jetbrains/ring-ui/components/list/list";
 
 export default class TabFavorites extends Component {
   getHistoryList() {
@@ -8,18 +8,11 @@ export default class TabFavorites extends Component {
     return historyList.map(({ event, date }) => ({
       label: event,
       rgItemType: List.ListProps.Type.ITEM,
-      description: date,
+      description: date
     }));
   }
 
   render() {
-
-    return (
-      <List
-        maxHeight={400}
-        data={this.getHistoryList()}
-        compact
-      />
-    );
+    return <List maxHeight={400} data={this.getHistoryList()} />;
   }
 }
