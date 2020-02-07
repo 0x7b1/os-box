@@ -1,37 +1,38 @@
 import React, { Component } from 'react';
 import { UserCard } from '@jetbrains/ring-ui/components/user-card/user-card';
 import List from '@jetbrains/ring-ui/components/list/list';
-import Button from '@jetbrains/ring-ui/components/button/button';
-import {
-  StarFilledIcon,
-  ReviewersGraphIcon,
-  ExpandIcon,
-  AddedIcon,
-} from '@jetbrains/ring-ui/components/icon';
+import Heading, { H1, H2, H3, H4 } from '@jetbrains/ring-ui/components/heading/heading';
+
+import constants from '../../lib/constants';
 
 export default class EnvList extends Component {
   renderEnvList() {
-    const { envList } = this.props;
+    const {
+      envList,
+      onCreateNewBox,
+      selectedBoxIndex,
+    } = this.props;
 
     const list = [];
 
-    list.push({
-      label: 'My Environments',
-      rgItemType: List.ListProps.Type.TITLE,
-      details: 'he',
-    });
+    envList.forEach(({ name, os }, i) => {
+      let label = <H2>{name}</H2>;
 
-    envList.forEach(({ name, os }) => {
+      if (i === selectedBoxIndex) {
+        label = <H1>{name}</H1>;
+      }
+
       list.push({
-        label: name,
+        id: i,
+        label,
         rgItemType: List.ListProps.Type.ITEM,
-        details: os,
+        icon: constants.box.osList[os].icon,
       });
     });
 
     list.push({
-      label: <Button icon={AddedIcon} primary>Add new</Button>,
-      // label: 'Add new',
+      label: '+ Add Box',
+      onClick: onCreateNewBox,
       rgItemType: List.ListProps.Type.LINK,
     });
 
@@ -39,15 +40,25 @@ export default class EnvList extends Component {
   }
 
   render() {
-    const { userCardInfo } = this.props;
+    const {
+      userCardInfo,
+      onSelectBox,
+      selectedBoxIndex,
+    } = this.props;
 
     return (
       <div className="cell">
-        <UserCard user={userCardInfo} />
-        <br/>
+        <UserCard user={{
+          name: <H3>{userCardInfo.name}</H3>,
+          login: userCardInfo.username,
+          email: userCardInfo.info,
+          avatarUrl: userCardInfo.avatar,
+        }} />
+        <br />
         <List
+          activeIndex={selectedBoxIndex}
           data={this.renderEnvList()}
-          shortcuts
+          onSelect={onSelectBox}
         />
       </div>
     );

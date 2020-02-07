@@ -1,100 +1,126 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import List from '@jetbrains/ring-ui/components/list/list';
-import Group from '@jetbrains/ring-ui/components/group/group';
 import Button from '@jetbrains/ring-ui/components/button/button';
-import ButtonSet from '@jetbrains/ring-ui/components/button-set/button-set';
-import Dropdown from '@jetbrains/ring-ui/components/dropdown/dropdown';
-import PopupMenu from '@jetbrains/ring-ui/components/popup-menu/popup-menu';
-import {UserCard} from '@jetbrains/ring-ui/components/user-card/user-card';
+import { UserCard } from '@jetbrains/ring-ui/components/user-card/user-card';
 import Island from '@jetbrains/ring-ui/components/island/island';
-
+import { Grid, Row, Col } from '@jetbrains/ring-ui/components/grid/grid';
 import {
-  PinFilledIcon,
-  PinEmptyIcon,
-  TrashIcon,
-  LinkIcon,
-  MoreOptionsIcon,
-  PencilIcon
+  DownloadIcon,
+  FileIcon,
 } from '@jetbrains/ring-ui/components/icon';
+import Code from '@jetbrains/ring-ui/components/code/code';
+import Icon from '@jetbrains/ring-ui/components/icon/icon';
+import Link from '@jetbrains/ring-ui/components/link/link';
+
+import constants from '../../lib/constants';
 
 export default class TabDetails extends Component {
-  getDetailsData() {
-    const data = [
-      {
-        category: 'System Graphics',
-        items: [
-          {
-            name: 'i3wm',
-            description: 'Tiling Window Manager',
-            icon: 'https://avatars0.githubusercontent.com/u/2180529?s=460&v=4'
-          },
-          {
-            name: 'Materia compact',
-            description: 'GTK Theme',
-            icon: 'https://avatars0.githubusercontent.com/u/2180529?s=460&v=4'
-          }
-        ]
-      },
-      {
-        category: 'Packages to install',
-        items: [
-          {
-            name: 'Firefox',
-            description: 'Web Browser',
-            icon: 'https://avatars0.githubusercontent.com/u/2180529?s=460&v=4',
-            pinned: true
-          },
-          {
-            name: 'Materia compact',
-            description: 'GTK Theme',
-            icon: 'https://avatars0.githubusercontent.com/u/2180529?s=460&v=4'
-          }
-        ]
-      }
-    ];
+  state = {
+    selectedScriptIndex: null,
+  };
 
-    const result = [];
+  renderPackageList(packagesList, selectedOS) {
+    const osType = constants.box.osList[selectedOS].type;
+    const packages = constants[`packages_${osType}`];
 
-    data.forEach(({category, items}, i) => {
-      result.push({
-        rgItemType: List.ListProps.Type.TITLE,
-        label: `${category} (${items.length})`
-      });
+    console.log('----', packages);
+    console.log('----', packagesList);
 
-      items.forEach(({name, description, icon, pinned}) => {
-        const programInfo = {
-          name,
-          login: description,
-          avatarUrl: icon
-        };
-        result.push({
-          label: (
-            <Group>
-              <Island>
-                <div className="cell">
-                  <UserCard user={programInfo} data-test="user-card-inline"/>
-                </div>
-              </Island>
-            </Group>
-          ),
-          rgItemType: List.ListProps.Type.ITEM,
+    return packagesList.map((packageId, id) => (
+      <Col key={id} xs={2}>
+        <Island>
+          <UserCard
+            user={{
+              name: packages[packageId].name,
+              name: packages[packageId].name,
+              avatarUrl: packages[packageId].icon,
+              login: `${packages[packageId].description.slice(0, 20)}...`,
+            }}
+          />
+        </Island>
+      </Col>
+    ));
+  }
 
-        });
+  getScriptFilesList(scriptFilesList) {
+    const dataList = [];
+    dataList.push({
+      rgItemType: List.ListProps.Type.TITLE,
+      label: 'Custom Scripts',
+    });
+
+    scriptFilesList.forEach(({ filename }, i) => {
+      dataList.push({
+        key: i,
+        label: filename,
+        rgItemType: List.ListProps.Type.ITEM,
+        glyph: FileIcon,
+        iconSize: Icon.Size.Size16,
       });
     });
 
-    return result;
+    return dataList;
+  }
+
+  renderScriptPreview(scriptFilesList) {
+    const { selectedScriptIndex } = this.state;
+    const filePreviewData = scriptFilesList[selectedScriptIndex];
+
+    return (
+      <Code
+        language={filePreviewData.language}
+        code={filePreviewData.content}
+      />
+    );
   }
 
   render() {
+    const {
+      onAddNewPackage,
+      packagesList = [],
+      scriptFilesList = [],
+      selectedOS,
+    } = this.props;
+
     return (
       <>
-        <List
-          data={this.getDetailsData()}
-          shortcuts
-          compact
-          onSelect={console.log}
-        />
+        <Grid data-test="distribution">
+          <Row>
+            {this.renderPackageList(packagesList, selectedOS)}
+            <Col xs={2}>
+              <UserCard user={{
+                name: <Link onClick={onAddNewPackage}>Add Package</Link>,
+                avatarUrl: 'https://image.flaticon.com/icons/svg/679/679720.svg',
+              }}
+              />
+            </Col>
+          </Row>
+          {
+            scriptFilesList.length
+              ? (
+                <Row>
+                  <Col xs={12}>
+                    <List
+                      onSelect={({ key }) => this.setState({ selectedScriptIndex: key })}
+                      data={this.getScriptFilesList(scriptFilesList)}
+                      compact
+                    />
+                    {
+                      this.state.selectedScriptIndex !== null
+                        ? (
+                          <>
+                            {this.renderScriptPreview(scriptFilesList)}
+                            <Button icon={DownloadIcon}>Download File</Button>
+                          </>
+                        )
+                        : null
+                    }
+                  </Col>
+                </Row>
+              )
+              : null
+          }
+        </Grid>
       </>
     );
   }
