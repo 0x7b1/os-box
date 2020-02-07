@@ -1,5 +1,5 @@
 @import "@jetbrains/ring-ui/components/global/variables.css";
-@import url('https://fonts.googleapis.com/css?family=Fira+Sans+Condensed&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans+Condensed&display=swap");
 
 html,
 .app-root {
@@ -17,7 +17,6 @@ html,
 
 .app-content {
   margin: calc(var(--ring-unit) * 4);
-
 }
 
 .header {
@@ -33,7 +32,11 @@ html,
 }
 
 .col-xs-2_358 {
-  padding-top: 20px;
+  padding-top: 8px;
+}
+
+.dropdown_282 {
+  padding-right: 9px;
 }
 
 .text_833 {
@@ -45,19 +48,17 @@ html,
 
 .label_153 {
   font-family: "Fira Sans Condensed";
-  font-size: 20px;
-
+  font-size: 15px;
 }
 
 .scrollableWrapper_51d {
   font-family: "Fira Sans Condensed";
   font-size: 17px;
-
 }
 
 .titles_818 {
   font-family: "Fira Sans Condensed";
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .button_62d {
@@ -93,7 +94,10 @@ html,
   font-size: 17px;
 }
 
+.inner_f1d {
+  font-size: 20px;
+}
+
 .icon_ce4 {
   padding-bottom: 0;
 }
-
