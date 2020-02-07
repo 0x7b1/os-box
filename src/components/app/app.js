@@ -39,13 +39,9 @@ export default class AppRoot extends Component {
         os: constants.box.osList.ANDROID.id,
         isPrivate: false,
         starsCount: 10,
-<<<<<<< HEAD
         packages: [
           // 'WORD2007',
         ],
-=======
-        packages: ["WORD2007"],
->>>>>>> f36ee61cbdea7f675f7257c798bb2b1f68bec7c2
         scriptFiles: [
           {
             filename: "i3config0.sh",
@@ -198,6 +194,7 @@ export default class AppRoot extends Component {
               <Col xs={10}>
                 <EnvInfo
                   envData={boxList[selectedBoxIndex]}
+                  selectedOS={boxList[selectedBoxIndex].os}
                   tags={[]}
                   onPreviewScreenshot={this.onPreviewScreenshot}
                   onAddNewPackage={() =>

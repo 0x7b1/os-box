@@ -45,6 +45,7 @@ export default class EnvInfo extends Component {
       tags,
       onAddNewPackage,
       onPreviewScreenshot,
+      selectedOS,
     } = this.props;
 
     return (
@@ -59,6 +60,7 @@ export default class EnvInfo extends Component {
               onAddNewPackage={onAddNewPackage}
               packagesList={envData.packages}
               scriptFilesList={envData.scriptFiles}
+              selectedOS={selectedOS}
             />
           </Tab>
           <Tab id="screenshots" title="Screenshots">
