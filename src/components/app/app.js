@@ -89,6 +89,26 @@ export default class AppRoot extends Component {
         ],
         history: [
           {
+            event: "Uploaded a screenshot",
+            date: "01/04/2020 20:22"
+          },
+          {
+            event: "Added Visual Studio Code",
+            date: "01/05/2020 18:19"
+          },
+          {
+            event: "Added IntelliJ",
+            date: "01/04/2020 16:20"
+          },
+          {
+            event: "Added Telegram",
+            date: "01/04/2020 15:15"
+          },
+          {
+            event: "Added qBitTorrent",
+            date: "01/04/2020 15:12"
+          },
+          {
             event: "New installation made on a new machine",
             date: "01/03/2020 12:38"
           },
@@ -185,7 +205,9 @@ export default class AppRoot extends Component {
                     id !== undefined && this.setState({ selectedBoxIndex: id })
                   }
                   onCreateNewBox={() =>
-                    this.setState({ dialogModeOpen: constants.dialog.mode.BOX })
+                    this.setState({
+                      dialogModeOpen: constants.dialog.mode.BOX
+                    })
                   }
                 />
               </Col>
