@@ -20,6 +20,16 @@
     "icon": "desktopicons/Outlook.png"
   },
   {
+    "name": "MS Project",
+    "description": "Project management software product, developed and sold by Microsoft",
+    "icon": "desktopicons/Project.png"
+  },
+  {
+    "name": "MS Teams",
+    "description": "Unified communication and collaboration platform",
+    "icon": "desktopicons/Teams.png"
+  },
+  {
     "name": "Google Chrome",
     "description": "The web browser from Google",
     "icon": "desktopicons/Chrome.png"
@@ -50,9 +60,59 @@
     "icon": "desktopicons/VirtualBox.png"
   },
   {
+    "name": "Visual Studio Code",
+    "description": "A code editor redefined and optimized for building and debugging modern web and cloud applications",
+    "icon": "desktopicons/VSCode.png"
+  },
+  {
     "name": "Atom",
     "description": "A hackable text editor for the 21st Century",
     "icon": "desktopicons/Atom.png"
+  },
+  {
+    "name": "IntelliJ IDEA",
+    "description": "An integrated development environment written in Java for developing computer software",
+    "icon": "desktopicons/IntelliJ.png"
+  },
+  {
+    "name": "Sublime Text",
+    "description": "Shareware cross-platform source code editor with a Python application programming interface",
+    "icon": "desktopicons/Sublime.png"
+  },
+  {
+    "name": "Git",
+    "description": "Distributed version-control system for tracking changes in source code during software development",
+    "icon": "desktopicons/Git.png"
+  },
+  {
+    "name": "Sourcetree",
+    "description": "A Git GUI that offers a visual representation of your repositories",
+    "icon": "desktopicons/Sourcetree.png"
+  },
+  {
+    "name": "Hyper",
+    "description": "A terminal built on web technologies",
+    "icon": "desktopicons/Hyper.png"
+  },
+  {
+    "name": "Python",
+    "description": "Interpreted, high-level, general-purpose programming language",
+    "icon": "desktopicons/Python.png"
+  },
+  {
+    "name": "Java",
+    "description": "General-purpose programming language",
+    "icon": "desktopicons/Java.png"
+  },
+  {
+    "name": "Figma",
+    "description": "Collaborative interface design tool",
+    "icon": "desktopicons/Figma.png"
+  },
+  {
+    "name": "Sketch",
+    "description": "The digital design toolkit",
+    "icon": "desktopicons/Sketch.png"
   },
   {
     "name": "Skype",
