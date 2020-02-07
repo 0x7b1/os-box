@@ -23,6 +23,9 @@ export default class TabDetails extends Component {
     const osType = constants.box.osList[selectedOS].type;
     const packages = constants[`packages_${osType}`];
 
+    console.log('----', packages);
+    console.log('----', packagesList);
+
     return packagesList.map((packageId, id) => (
       <Col key={id} xs={2}>
         <Island>

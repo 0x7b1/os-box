@@ -40,7 +40,11 @@ export default class AppRoot extends Component {
         isPrivate: false,
         starsCount: 10,
         packages: [
-          // 'WORD2007',
+          'INSTAGRAM',
+          'MESSENGER',
+          'SHAZAM',
+          'SNAPCHAT',
+          'TIKTOK',
         ],
         scriptFiles: [
           {
