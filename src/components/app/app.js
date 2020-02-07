@@ -35,7 +35,7 @@ export default class AppRoot extends Component {
         isPrivate: false,
         starsCount: 10,
         packages: [
-          'WORD2007',
+          // 'WORD2007',
         ],
         scriptFiles: [
           {
@@ -200,6 +200,7 @@ export default class AppRoot extends Component {
             onCreateBox={this.onCreateBox}
           />
           <DialogPackage
+            selectedOS={boxList[selectedBoxIndex].os}
             dialogMode={dialogModeOpen}
             onAddPackage={this.onAddPackage}
             onCloseDialog={this.onCloseDialog}

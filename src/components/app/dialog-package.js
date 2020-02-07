@@ -11,9 +11,11 @@ import constants from '../../lib/constants';
 export default class DialogPackage extends Component {
   state = { selectedSoftwareId: null };
 
-  getPackagesList() {
+  getPackagesList(selectedOS) {
     const { selectedPackages = [] } = this.props;
-    const { packages } = constants;
+    const osType = constants.box.osList[selectedOS].type;
+    const packages = constants[`packages_${osType}`];
+
     const packagesList = [];
 
     for (let pckg in packages) {
@@ -33,6 +35,7 @@ export default class DialogPackage extends Component {
     const { selectedSoftwareId } = this.state;
     const {
       dialogMode,
+      selectedOS,
       onCloseDialog,
       onAddPackage,
     } = this.props;
@@ -54,12 +57,12 @@ export default class DialogPackage extends Component {
                 alwaysVisible: true,
                 label: 'Create New Custom Script',
               }}
-              onAdd={value => console.log('Add', value)}
               compact
+              onAdd={value => console.log('Add', value)}
               onSelect={({ key }) => this.setState({ selectedSoftwareId: key })}
               selected={0}
               label="Search for a software"
-              data={this.getPackagesList()} />
+              data={this.getPackagesList(selectedOS)} />
             <br />
             <br />
             <Toggle defaultChecked>{' Install the latest version'}</Toggle>

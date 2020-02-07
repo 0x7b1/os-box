@@ -27,7 +27,7 @@ export default class TabDetails extends Component {
             user={{
               name: constants.packages[packageId].name,
               avatarUrl: constants.packages[packageId].icon,
-              login: constants.packages[packageId].description,
+              login: `${constants.packages[packageId].description.slice(0, 20)}...`,
             }}
           />
         </Island>
@@ -58,9 +58,6 @@ export default class TabDetails extends Component {
   renderScriptPreview(scriptFilesList) {
     const { selectedScriptIndex } = this.state;
     const filePreviewData = scriptFilesList[selectedScriptIndex];
-    console.log('scriptFilesList', scriptFilesList);
-    console.log('selectedScriptIndex', selectedScriptIndex);
-    console.log('filePreviewData', filePreviewData);
 
     return (
       <Code
