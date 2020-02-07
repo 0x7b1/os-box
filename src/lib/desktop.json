@@ -1,0 +1,102 @@
+[
+  {
+    "name": "MS Word 2019",
+    "description": "Word-processing program",
+    "icon": "desktopicons/Word.png"
+  },
+  {
+    "name": "MS Excel 2019",
+    "description": "Software for spreadsheets",
+    "icon": "desktopicons/Excel.png"
+  },
+  {
+    "name": "MS PowerPoint 2019",
+    "description": "Software for presentations",
+    "icon": "desktopicons/PowerPoint.png"
+  },
+  {
+    "name": "MS Outlook 2019",
+    "description": "Softare for personal information management",
+    "icon": "desktopicons/Outlook.png"
+  },
+  {
+    "name": "Google Chrome",
+    "description": "The web browser from Google",
+    "icon": "desktopicons/Chrome.png"
+  },
+  {
+    "name": "Chromium",
+    "description": "The open-source web browser providing the code for Google Chrome",
+    "icon": "desktopicons/Chromium.png"
+  },
+  {
+    "name": "Firefox",
+    "description": "The web browser from Mozilla",
+    "icon": "desktopicons/Firefox.png"
+  },
+  {
+    "name": "Opera",
+    "description": "Just another web browser",
+    "icon": "desktopicons/Opera.png"
+  },
+  {
+    "name": "Dropbox",
+    "description": "A cloud hosting service to store your files online",
+    "icon": "desktopicons/Dropbox.png"
+  },
+  {
+    "name": "VirtualBox",
+    "description": "A virtualization software to run other OSes on top of your current OS",
+    "icon": "desktopicons/VirtualBox.png"
+  },
+  {
+    "name": "Skype",
+    "description": "A videocall software from Microsoft",
+    "icon": "desktopicons/Skype.png"
+  },
+  {
+    "name": "Thunderbird",
+    "description": "A mail client from Mozilla",
+    "icon": "desktopicons/Thunderbird.png"
+  },
+  {
+    "name": "Telegram",
+    "description": "A privacy-oriented messenger application",
+    "icon": "desktopicons/Telegram.png"
+  },
+  {
+    "name": "Slack",
+    "description": "A team communication application",
+    "icon": "desktopicons/Slack.png"
+  },
+  {
+    "name": "VLC",
+    "description": "The most famous multimedia player",
+    "icon": "desktopicons/VLC.png"
+  },
+  {
+    "name": "Spotify",
+    "description": "One of the best music streaming apps",
+    "icon": "desktopicons/Spotify.png"
+  },
+  {
+    "name": "Audacity",
+    "description": "Record and edit audio files",
+    "icon": "desktopicons/Audacity.png"
+  },
+  {
+    "name": "Gimp",
+    "description": "An image editor",
+    "icon": "desktopicons/Gimp.png"
+  },
+  {
+    "name": "Inkscape",
+    "description": "Create and edit scalable vectorial images",
+    "icon": "desktopicons/Inkscape.png"
+  },
+  {
+    "name": "Blender",
+    "description": "3D modelling, animation, rendering and production",
+    "icon": "desktopicons/Blender.png"
+  }
+]

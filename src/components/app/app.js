@@ -39,7 +39,9 @@ export default class AppRoot extends Component {
         os: constants.box.osList.ANDROID.id,
         isPrivate: false,
         starsCount: 10,
-        packages: ["WORD2007"],
+        packages: [
+          // 'WORD2007',
+        ],
         scriptFiles: [
           {
             filename: "i3config0.sh",
@@ -192,6 +194,7 @@ export default class AppRoot extends Component {
               <Col xs={10}>
                 <EnvInfo
                   envData={boxList[selectedBoxIndex]}
+                  selectedOS={boxList[selectedBoxIndex].os}
                   tags={[]}
                   onPreviewScreenshot={this.onPreviewScreenshot}
                   onAddNewPackage={() =>
@@ -209,6 +212,7 @@ export default class AppRoot extends Component {
             onCreateBox={this.onCreateBox}
           />
           <DialogPackage
+            selectedOS={boxList[selectedBoxIndex].os}
             dialogMode={dialogModeOpen}
             onAddPackage={this.onAddPackage}
             onCloseDialog={this.onCloseDialog}
