@@ -1,7 +1,7 @@
 import mobileApps from "./mobile.json";
 import desktopSoftwares from "./desktop.json";
 
-const HOST_NAME = "http://172.17.152.225:8080";
+const HOST_NAME = "http://172.17.153.204:8080";
 
 function getPackageList(rawPackageList) {
   const desktopList = {};
