@@ -25,7 +25,7 @@
     "icon": "desktopicons/Chrome.png"
   },
   {
-      "name": "Chromium",
+    "name": "Chromium",
     "description": "The open-source web browser providing the code for Google Chrome",
     "icon": "desktopicons/Chromium.png"
   },
@@ -48,6 +48,11 @@
     "name": "VirtualBox",
     "description": "A virtualization software to run other OSes on top of your current OS",
     "icon": "desktopicons/VirtualBox.png"
+  },
+  {
+    "name": "Atom",
+    "description": "A hackable text editor for the 21st Century",
+    "icon": "desktopicons/Atom.png"
   },
   {
     "name": "Skype",
