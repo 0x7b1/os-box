@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Input from '@jetbrains/ring-ui/components/input/input';
+import ButtonSet from '@jetbrains/ring-ui/components/button-set/button-set';
 import Toggle from '@jetbrains/ring-ui/components/toggle/toggle';
+import Select from '@jetbrains/ring-ui/components/select/select';
 import Panel from '@jetbrains/ring-ui/components/panel/panel';
 import Button from '@jetbrains/ring-ui/components/button/button';
 import {
@@ -8,53 +10,41 @@ import {
   DownloadIcon,
 } from '@jetbrains/ring-ui/components/icon';
 
+import constants from '../../lib/constants';
+
 export default function TabSettings(props) {
+  const { boxInfo } = props;
+
   return (
     <>
+      <h3>Box Settings</h3>
       <form className="inputs">
         <Input
-          label="Device Name"
-          defaultValue="Desktop Computer"
+          label="Box Name"
+          defaultValue={boxInfo.name}
         />
         <Input
           label="Operating System"
-          defaultValue="Ubuntu 18.04"
-        />
-        <Input
-          label="Github Account"
-          defaultValue="0x7b1"
-        />
-        <Input
-          label="Repository"
-          defaultValue="dotfiles"
-        />
-        <Input
-          label="Creation Date"
-          defaultValue="17/03/17 15:40"
           disabled
+          defaultValue={constants.box.osList[boxInfo.os].name}
         />
-        <Toggle defaultChecked>Allow Comments</Toggle>
-        <br />
-        <br />
-        <Toggle>Private Env</Toggle>
-        <Panel>
-          <Button blue>{'Apply changes'}</Button>
-          <Button>{'Cancel'}</Button>
-        </Panel>
+        <Toggle>Private</Toggle>
       </form>
-      <br />
       <h3>Advanced</h3>
-      <Button icon={DownloadIcon}>Export Data as CSV</Button>
-      <br />
-      <Button icon={DownloadIcon}>Export Data as JSON</Button>
-      <br />
+      <Button icon={DownloadIcon}>Export Data</Button>
       <br />
       <Button
         icon={RemoveIcon}
         danger
       >
-        {'Delete Account'}
+        {'Delete Box'}
       </Button>
+      <br />
+      <br />
+      <ButtonSet>
+        <Button blue>{'Save changes'}</Button>
+        <Button>{'Cancel'}</Button>
+      </ButtonSet>
     </>
   );
 }
