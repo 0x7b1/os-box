@@ -472,7 +472,7 @@ class Alfred:
 
         # Load recipes
         if localRecipes:
-            with open('test2.json','r') as f:
+            with open('recipes.json','r') as f:
                 self.recipes = json.load(f)
         else:
             url = 'https://raw.githubusercontent.com/derkomai/alfred/master/recipes.json'

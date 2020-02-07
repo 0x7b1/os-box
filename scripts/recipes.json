@@ -1,8 +1,20 @@
 [
 	{
-        "name": "VLC",
-        "description": "The most famous multimedia player",
+        "name": "Google Chrome",
+        "description": "The web browser from Google",
+        "type": "deb",
+        "recipe": ["https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"]
+    },
+    {
+        "name": "Telegram",
+        "description": "A messenger application",
         "type": "snap",
-        "recipe": ["vlc"]
+        "recipe": ["telegram-desktop"]
+    },
+    {
+        "name": "Atom",
+        "description": "A hackable text editor",
+        "type": "ppa",
+        "recipe": ["ppa:webupd8team/atom", "atom"]
     }
 ]
