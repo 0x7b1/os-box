@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Bolt",
+    "description": "Bolt (Taxify) is a technology company that connects thousands of riders with reliable drivers around Europe.",
+    "icon": "bolt.webp"
+  },
+  {
+    "name": "Facebook",
+    "description": "Connect with friends and family and meet new people on your social media network.",
+    "icon": "facebook.webp"
+  },
+  {
+    "name": "Instagram",
+    "description": "Connect with friends, share what you’re up to, or see what's new from others all over the world.",
+    "icon": "instagram.webp"
+  },
+  {
+    "name": "Messenger",
+    "description": "Be together whenever with a simple way to text, video chat and rally the group..",
+    "icon": "messenger.webp"
+  },
+  {
+    "name": "Reddit",
+    "description": "With over 100K active communities, on Reddit you can laugh, think, discuss and dig deep into topics that matter to you.",
+    "icon": "reddit.webp"
+  },
+  {
+    "name": "Shazam",
+    "description": "Shazam will identify any song in seconds. Discover, artists, lyrics, videos & playlists, all for free. Over 1 billion installs and counting.",
+    "icon": "Shazam.webp"
+  },
+  {
+    "name": "Snapchat",
+    "description": "The fastest way to share a moment.",
+    "icon": "snapchat.webp"
+  },
+  {
+    "name": "Tiktok",
+    "description": "Make your day.",
+    "icon": "tiktok.webp"
+  },
+  {
+    "name": "Tinder",
+    "description": "Dating app.",
+    "icon": "tinder.webp"
+  },
+  {
+    "name": "Uber",
+    "description": "Everyone private driver",
+    "icon": "uber.webp"
+  }
+]
