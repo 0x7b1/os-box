@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { UserCard } from '@jetbrains/ring-ui/components/user-card/user-card';
+import React, {Component} from 'react';
+import {UserCard} from '@jetbrains/ring-ui/components/user-card/user-card';
 
 export default function TabFavorites(props) {
   return (

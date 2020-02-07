@@ -131,7 +131,7 @@ export default class AppRoot extends Component {
     return {
       name: boxName,
       os: osId,
-      starsCount: 0,
+      starsCount: 1,
       packages: [],
       scriptFiles: [],
       screenshots: [],
