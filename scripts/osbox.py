@@ -313,8 +313,8 @@ class Zenity:
                 '--width=1000',
                 '--title=OSBox',
                 '--window-icon=alfred.png',
-                '--text=Select package to install:',
-                '--column=Package',
+                '--text=Select box to install:',
+                '--column=Box',
                 '--column=Description']
 
         args.extend(data)
@@ -487,8 +487,8 @@ class Alfred:
         while True:
             tableData = []
 
-            tableData.append("Pipedrive Developer")
-            tableData.append("General developer package for Pipedrive.")
+            tableData.append("Pipedrive Dev")
+            tableData.append("General developer box for Pipedrive.")
 
             table = Zenity.packageTable(tableData)
 
