@@ -1,0 +1,8 @@
+[
+	{
+        "name": "VLC",
+        "description": "The most famous multimedia player",
+        "type": "snap",
+        "recipe": ["vlc"]
+    }
+]
