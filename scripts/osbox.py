@@ -313,8 +313,8 @@ class Zenity:
                 '--width=1000',
                 '--title=OSBox',
                 '--window-icon=alfred.png',
-                '--text=Select package to install:',
-                '--column=Package',
+                '--text=Select box to install:',
+                '--column=Box',
                 '--column=Description']
 
         args.extend(data)
@@ -472,7 +472,7 @@ class Alfred:
 
         # Load recipes
         if localRecipes:
-            with open('test2.json','r') as f:
+            with open('recipes.json','r') as f:
                 self.recipes = json.load(f)
         else:
             url = 'https://raw.githubusercontent.com/derkomai/alfred/master/recipes.json'
@@ -487,8 +487,8 @@ class Alfred:
         while True:
             tableData = []
 
-            tableData.append("Developer")
-            tableData.append("General developer package.")
+            tableData.append("Pipedrive Dev")
+            tableData.append("General developer box for Pipedrive.")
 
             table = Zenity.packageTable(tableData)
 

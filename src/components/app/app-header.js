@@ -1,20 +1,29 @@
-import React, { Component } from 'react';
-import Theme from '@jetbrains/ring-ui/components/global/theme';
-import Header, { Logo, Tray } from '@jetbrains/ring-ui/components/header/header';
-import Dropdown from '@jetbrains/ring-ui/components/dropdown/dropdown';
-import Button from '@jetbrains/ring-ui/components/button/button';
+import React, { Component } from "react";
+import Theme from "@jetbrains/ring-ui/components/global/theme";
+import Header, {
+  Logo,
+  Tray
+} from "@jetbrains/ring-ui/components/header/header";
+import Dropdown from "@jetbrains/ring-ui/components/dropdown/dropdown";
+import Button from "@jetbrains/ring-ui/components/button/button";
 import {
   ArtifactsIcon,
   PinFilledIcon,
   UserIcon
-} from '@jetbrains/ring-ui/components/icon';
-import PopupMenu from '@jetbrains/ring-ui/components/popup-menu/popup-menu';
-import Group from '@jetbrains/ring-ui/components/group/group';
+} from "@jetbrains/ring-ui/components/icon";
+import PopupMenu from "@jetbrains/ring-ui/components/popup-menu/popup-menu";
+import Group from "@jetbrains/ring-ui/components/group/group";
 
 export default class AppHeader extends Component {
   renderLoggedInfo() {
     return (
-      <Dropdown anchor={<Button id="userIcon" icon={UserIcon} >{'John Smith'} </Button>}>
+      <Dropdown
+        anchor={
+          <Button id="userIcon" icon={UserIcon}>
+            {"Martin Starr"}{" "}
+          </Button>
+        }
+      >
         <PopupMenu
           top={-17}
           closeOnSelect
@@ -31,8 +40,8 @@ export default class AppHeader extends Component {
   renderUnloggedInfo() {
     return (
       <Group>
-        <Button text>{'Login'}</Button>
-        <Button blue>{'Register'}</Button>
+        <Button text>{"Login"}</Button>
+        <Button blue>{"Register"}</Button>
       </Group>
     );
   }
@@ -50,11 +59,7 @@ export default class AppHeader extends Component {
           />
         </a>
         <Tray>
-          {
-            isLogged
-              ? this.renderLoggedInfo()
-              : this.renderUnloggedInfo()
-          }
+          {isLogged ? this.renderLoggedInfo() : this.renderUnloggedInfo()}
         </Tray>
       </Header>
     );
