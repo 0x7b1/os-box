@@ -1,240 +1,121 @@
 import React, { Component } from 'react';
 import List from '@jetbrains/ring-ui/components/list/list';
-import Group from '@jetbrains/ring-ui/components/group/group';
-import Toggle from '@jetbrains/ring-ui/components/toggle/toggle';
-import Panel from '@jetbrains/ring-ui/components/panel/panel';
 import Button from '@jetbrains/ring-ui/components/button/button';
-import Input from '@jetbrains/ring-ui/components/input/input';
-import ButtonSet from '@jetbrains/ring-ui/components/button-set/button-set';
-import Dropdown from '@jetbrains/ring-ui/components/dropdown/dropdown';
-import PopupMenu from '@jetbrains/ring-ui/components/popup-menu/popup-menu';
 import { UserCard } from '@jetbrains/ring-ui/components/user-card/user-card';
 import Island from '@jetbrains/ring-ui/components/island/island';
 import { Grid, Row, Col } from '@jetbrains/ring-ui/components/grid/grid';
 import {
-  StarFilledIcon,
-  ReviewersGraphIcon,
   DownloadIcon,
-  PencilIcon,
+  FileIcon,
 } from '@jetbrains/ring-ui/components/icon';
-import Dialog from '@jetbrains/ring-ui/components/dialog/dialog';
-import { Header, Content } from '@jetbrains/ring-ui/components/island/island';
-import Text from '@jetbrains/ring-ui/components/text/text';
-import Checkbox from '@jetbrains/ring-ui/components/checkbox/checkbox';
-import Avatar, { Size } from '@jetbrains/ring-ui/components/avatar/avatar';
+import Code from '@jetbrains/ring-ui/components/code/code';
+import Icon from '@jetbrains/ring-ui/components/icon/icon';
 import Link from '@jetbrains/ring-ui/components/link/link';
-import Select from '@jetbrains/ring-ui/components/select/select';
 
-const tags = [
-  {
-    name: 'Design Team',
-  },
-  {
-    name: 'Pipedrive devs',
-  },
-];
+import constants from '../../lib/constants';
 
 export default class TabDetails extends Component {
-  getDetailsData() {
-    const data = [
-      {
-        category: 'System Graphics',
-        items: [
-          {
-            name: 'i3wm',
-            description: 'Tiling Window Manager',
-            icon: 'https://avatars0.githubusercontent.com/u/2180529?s=460&v=4'
-          },
-          {
-            name: 'Materia compact',
-            description: 'GTK Theme',
-            icon: 'https://avatars0.githubusercontent.com/u/2180529?s=460&v=4'
-          }
-        ]
-      },
-      {
-        category: 'Packages to install',
-        items: [
-          {
-            name: 'Firefox',
-            description: 'Web Browser',
-            icon: 'https://avatars0.githubusercontent.com/u/2180529?s=460&v=4',
-            pinned: true
-          },
-          {
-            name: 'Materia compact',
-            description: 'GTK Theme',
-            icon: 'https://avatars0.githubusercontent.com/u/2180529?s=460&v=4'
-          }
-        ]
-      }
-    ];
+  state = {
+    selectedScriptIndex: null,
+  };
 
-    const result = [];
+  renderPackageList(packagesList) {
+    return packagesList.map((packageId, id) => (
+      <Col key={id} xs={2}>
+        <Island>
+          <UserCard
+            user={{
+              name: constants.packages[packageId].name,
+              avatarUrl: constants.packages[packageId].icon,
+              login: constants.packages[packageId].description,
+            }}
+          />
+        </Island>
+      </Col>
+    ));
+  }
 
-    data.forEach(({ category, items }, i) => {
-      result.push({
-        rgItemType: List.ListProps.Type.TITLE,
-        label: `${category} (${items.length})`
-      });
+  getScriptFilesList(scriptFilesList) {
+    const dataList = [];
+    dataList.push({
+      rgItemType: List.ListProps.Type.TITLE,
+      label: 'Custom Scripts',
+    });
 
-      items.forEach(({ name, description, icon, pinned }) => {
-        const programInfo = {
-          name,
-          login: description,
-          avatarUrl: icon
-        };
-        result.push({
-          label: (
-            <Group>
-              <Island>
-                <div className="cell">
-                  <UserCard user={programInfo} data-test="user-card-inline" />
-                </div>
-              </Island>
-            </Group>
-          ),
-          rgItemType: List.ListProps.Type.ITEM,
-
-        });
+    scriptFilesList.forEach(({ filename }, i) => {
+      dataList.push({
+        key: i,
+        label: filename,
+        rgItemType: List.ListProps.Type.ITEM,
+        glyph: FileIcon,
+        iconSize: Icon.Size.Size16,
       });
     });
 
-    return result;
+    return dataList;
+  }
+
+  renderScriptPreview(scriptFilesList) {
+    const { selectedScriptIndex } = this.state;
+    const filePreviewData = scriptFilesList[selectedScriptIndex];
+    console.log('scriptFilesList', scriptFilesList);
+    console.log('selectedScriptIndex', selectedScriptIndex);
+    console.log('filePreviewData', filePreviewData);
+
+    return (
+      <Code
+        language={filePreviewData.language}
+        code={filePreviewData.content}
+      />
+    );
   }
 
   render() {
+    const {
+      onAddNewPackage,
+      packagesList = [],
+      scriptFilesList = [],
+    } = this.props;
+
     return (
       <>
         <Grid data-test="distribution">
           <Row>
-            <Col xs={2}>
-              <Island>
-                <UserCard user={{
-                  name: 'Microsoft Word 2017',
-                  avatarUrl: 'https://avatars0.githubusercontent.com/u/2180529?s=460&v=4',
-                  login: 'Productivity',
-                }}
-                />
-              </Island>
-            </Col>
-            <Col xs={2}>
-              <Island>
-                <UserCard user={{
-                  name: 'John Smith',
-                  avatarUrl: 'https://avatars0.githubusercontent.com/u/2180529?s=460&v=4',
-                  login: 'Productivity',
-                }}
-                />
-              </Island>
-            </Col>
-            <Col xs={2}>
-              <Island>
-                <UserCard user={{
-                  name: 'John Smith',
-                  avatarUrl: 'https://avatars0.githubusercontent.com/u/2180529?s=460&v=4',
-                  login: 'Productivity',
-                }}
-                />
-              </Island>
-            </Col>
+            {this.renderPackageList(packagesList)}
             <Col xs={2}>
               <UserCard user={{
-                name: <Link>Add package</Link>,
+                name: <Link onClick={onAddNewPackage}>Add Package</Link>,
                 avatarUrl: 'https://image.flaticon.com/icons/svg/679/679720.svg',
-                // avatarUrl: 'https://image.flaticon.com/icons/svg/1124/1124173.svg',
               }}
               />
             </Col>
           </Row>
+          {
+            scriptFilesList.length
+              ? (
+                <Row>
+                  <Col xs={12}>
+                    <List
+                      onSelect={({ key }) => this.setState({ selectedScriptIndex: key })}
+                      data={this.getScriptFilesList(scriptFilesList)}
+                      compact
+                    />
+                    {
+                      this.state.selectedScriptIndex !== null
+                        ? (
+                          <>
+                            {this.renderScriptPreview(scriptFilesList)}
+                            <Button icon={DownloadIcon}>Download File</Button>
+                          </>
+                        )
+                        : null
+                    }
+                  </Col>
+                </Row>
+              )
+              : null
+          }
         </Grid>
-
-        <Dialog
-          show={false}
-          onCloseAttempt={() => {
-          }}
-          trapFocus
-          autoFocusFirst={true}
-          showCloseButton
-        >
-          <Header>Add new app</Header>
-          <Content>
-            <form className="inputs">
-              <Select
-                filter
-                compact
-                selected={0}
-                label="Search for a software"
-                data={[
-                  {
-                    label: 'Python',
-                    key: 0,
-                    type: 'packages',
-                    icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAUCAIAAACMMcMmAAAAKklEQVRIx2NgGAWjgAbAh/aI4S7t0agdI9COzx00Rwz/z9Ecjdox8uwAACkGSkKIaGlAAAAAAElFTkSuQmCC',
-                  },
-                  {
-                    label: 'Python',
-                    key: 0,
-                    type: 'packages',
-                    icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAUCAIAAACMMcMmAAAAKklEQVRIx2NgGAWjgAbAh/aI4S7t0agdI9COzx00Rwz/z9Ecjdox8uwAACkGSkKIaGlAAAAAAElFTkSuQmCC',
-                  },
-                  {
-                    label: 'Python',
-                    key: 0,
-                    type: 'packages',
-                    icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAUCAIAAACMMcMmAAAAKklEQVRIx2NgGAWjgAbAh/aI4S7t0agdI9COzx00Rwz/z9Ecjdox8uwAACkGSkKIaGlAAAAAAElFTkSuQmCC',
-                  },
-                  {
-                    label: 'Python',
-                    key: 0,
-                    type: 'packages',
-                    icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAUCAIAAACMMcMmAAAAKklEQVRIx2NgGAWjgAbAh/aI4S7t0agdI9COzx00Rwz/z9Ecjdox8uwAACkGSkKIaGlAAAAAAElFTkSuQmCC',
-                  },
-                ]} />
-              <br />
-              <br />
-              <Toggle defaultChecked>{' Install the last version'}</Toggle>
-              <br />
-              <br />
-              <ButtonSet style={{ float: 'right' }}>
-                <Button blue>{'Save'}</Button>
-                <Button>{'Cancel'}</Button>
-              </ButtonSet>
-            </form>
-            {/* <List
-              data={[
-                {
-                  icon: 'https://avatars0.githubusercontent.com/u/2180529?s=460&v=4,',
-                  label:
-                    <Group>
-                      <Checkbox defaultChecked />
-                      <Text>{'Jetbrains Pycharm'}</Text>
-                      <Text info>{'2019'}</Text>
-                    </Group>,
-                  rgItemType: List.ListProps.Type.ITEM,
-                },
-                {
-                  icon: 'https://avatars0.githubusercontent.com/u/2180529?s=460&v=4,',
-                  label:
-                    <Group>
-                      <Checkbox defaultChecked />
-                      <Text>{'Word 2019'}</Text>
-                      <Text info>{'Microsoft'}</Text>
-                    </Group>,
-                  rgItemType: List.ListProps.Type.ITEM,
-                },
-              ]}
-              shortcuts
-            /> */}
-          </Content>
-        </Dialog>
-
-        {/* <List
-          data={this.getDetailsData()}
-          shortcuts
-          compact
-          onSelect={console.log}
-        /> */}
       </>
     );
   }

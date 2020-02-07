@@ -1,41 +1,38 @@
 import React, { Component } from 'react';
 import { UserCard } from '@jetbrains/ring-ui/components/user-card/user-card';
 import List from '@jetbrains/ring-ui/components/list/list';
-import Text from '@jetbrains/ring-ui/components/text/text';
-import Button from '@jetbrains/ring-ui/components/button/button';
-import {
-  StarFilledIcon,
-  ReviewersGraphIcon,
-  ExpandIcon,
-  AddedIcon,
-} from '@jetbrains/ring-ui/components/icon';
 import Heading, { H1, H2, H3, H4 } from '@jetbrains/ring-ui/components/heading/heading';
+
+import constants from '../../lib/constants';
 
 export default class EnvList extends Component {
   renderEnvList() {
-    const { envList } = this.props;
+    const {
+      envList,
+      onCreateNewBox,
+      selectedBoxIndex,
+    } = this.props;
 
     const list = [];
 
-    envList.forEach(({ name, os }) => {
+    envList.forEach(({ name, os }, i) => {
+      let label = <H2>{name}</H2>;
+
+      if (i === selectedBoxIndex) {
+        label = <H1>{name}</H1>;
+      }
+
       list.push({
-        label: <H2>{name}</H2>,
+        id: i,
+        label,
         rgItemType: List.ListProps.Type.ITEM,
-        // details: <Text info>{os}</Text>,
-        // icon: 'https://image.flaticon.com/icons/svg/888/888839.svg',
-        // icon: 'https://image.flaticon.com/icons/svg/882/882702.svg',
-        icon: 'https://image.flaticon.com/icons/svg/2/2235.svg',
+        icon: constants.box.osList[os].icon,
       });
     });
 
-    // list.push({
-    //   label: 'My Environments',
-    //   rgItemType: List.ListProps.Type.SEPARATOR,
-    // });
-
     list.push({
-      // label: <Button icon={AddedIcon} primary>Add new</Button>,
-      label: '+ Add box',
+      label: '+ Add Box',
+      onClick: onCreateNewBox,
       rgItemType: List.ListProps.Type.LINK,
     });
 
@@ -43,15 +40,25 @@ export default class EnvList extends Component {
   }
 
   render() {
-    const { userCardInfo } = this.props;
+    const {
+      userCardInfo,
+      onSelectBox,
+      selectedBoxIndex,
+    } = this.props;
 
     return (
       <div className="cell">
-        <UserCard user={userCardInfo} />
+        <UserCard user={{
+          name: <H3>{userCardInfo.name}</H3>,
+          login: userCardInfo.username,
+          email: userCardInfo.info,
+          avatarUrl: userCardInfo.avatar,
+        }} />
         <br />
         <List
+          activeIndex={selectedBoxIndex}
           data={this.renderEnvList()}
-          shortcuts
+          onSelect={onSelectBox}
         />
       </div>
     );

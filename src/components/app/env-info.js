@@ -13,8 +13,6 @@ import {
 import Tag from '@jetbrains/ring-ui/components/tag/tag';
 import Link from '@jetbrains/ring-ui/components/link/link';
 
-import TabConfigurations from './tab-configurations';
-import TabInfo from './tab-info';
 import TabDetails from './tab-details';
 import TabScreenshots from './tab-screenshots';
 import TabSettings from './tab-settings';
@@ -25,67 +23,63 @@ import Heading, { H1, H2, H3, H4 } from '@jetbrains/ring-ui/components/heading/h
 export default class EnvInfo extends Component {
   state = { selected: 'details' };
 
-  renderBoxInfo() {
+  renderBoxInfo(starsCount) {
     return (
-      <Group>
-        <Heading level={Heading.Levels.H1}>{envData.name}</Heading>
-        <Text info>{'IOS 4.3.2'}</Text>
-        <Text>{'|'}</Text>
-        <Text info>{'Last update 4 days ago'}</Text>
-        <ButtonSet style={{ float: 'right' }}>
-          <Island>
-            <Button icon={StarFilledIcon} primary>Unstar</Button>
-          </Island>
-          {/* <Button blue>{'Save Changes'}</Button> */}
-          {/* <Button>{'Cancel'}</Button> */}
-          {/* <Button icon={PencilIcon} primary>Edit Box</Button> */}
-        </ButtonSet>
+      <Group style={{ float: 'right' }}>
+        <Island>
+          <Button
+            icon={StarFilledIcon}
+            primary
+          >
+            {'Unstar'}
+            <Text info>{` | ${starsCount}`}</Text>
+          </Button>
+        </Island>
       </Group>
-
     );
   }
 
   render() {
-    const { envData, tags } = this.props;
+    const {
+      envData = {},
+      tags,
+      onAddNewPackage,
+      onPreviewScreenshot,
+    } = this.props;
 
     return (
       <div className="cell">
-        {/* {this.renderBoxInfo()} */}
-        <ButtonSet style={{ float: 'right' }}>
-          <Island>
-            <Button icon={StarFilledIcon} primary>Unstar</Button>
-          </Island>
-          {/* <Button blue>{'Save Changes'}</Button> */}
-          {/* <Button>{'Cancel'}</Button> */}
-          {/* <Button icon={PencilIcon} primary>Edit Box</Button> */}
-        </ButtonSet>
+        {this.renderBoxInfo(envData.starsCount)}
         <Tabs
           selected={this.state.selected}
           onSelect={selected => this.setState({ selected })}
         >
-          {/* <Tab id="info" title="Info">
-            <TabInfo
-              envDescription={envData.readme}
-              tags={tags}
-            />
-          </Tab> */}
-          {/* <Tab id="configurations" title="Configurations">
-            <TabConfigurations />
-          </Tab> */}
           <Tab id="details" title="Packages">
-            <TabDetails />
+            <TabDetails
+              onAddNewPackage={onAddNewPackage}
+              packagesList={envData.packages}
+              scriptFilesList={envData.scriptFiles}
+            />
           </Tab>
           <Tab id="screenshots" title="Screenshots">
-            <TabScreenshots />
+            <TabScreenshots
+              screenshotList={envData.screenshots}
+              onPreviewScreenshot={onPreviewScreenshot}
+            />
           </Tab>
           <Tab id="history" title="History">
-            <TabHistory />
+            <TabHistory historyList={envData.history} />
           </Tab>
           <Tab id="favorites" title="Favorites">
             <TabFavorites />
           </Tab>
           <Tab id="settings" title="Settings">
-            <TabSettings />
+            <TabSettings
+              boxInfo={{
+                name: envData.name,
+                os: envData.os,
+              }}
+            />
           </Tab>
         </Tabs>
       </div>

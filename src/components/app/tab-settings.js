@@ -10,65 +10,39 @@ import {
   DownloadIcon,
 } from '@jetbrains/ring-ui/components/icon';
 
+import constants from '../../lib/constants';
+
 export default function TabSettings(props) {
+  const { boxInfo } = props;
+
   return (
     <>
+      <h3>Box Settings</h3>
       <form className="inputs">
         <Input
           label="Box Name"
-          defaultValue="My Phone"
+          defaultValue={boxInfo.name}
         />
-        <Select
-          filter
-          compact
-          selected={0}
+        <Input
           label="Operating System"
-          data={[
-            {
-              label: 'Windows',
-              key: 0,
-              type: 'packages',
-              icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAUCAIAAACMMcMmAAAAKklEQVRIx2NgGAWjgAbAh/aI4S7t0agdI9COzx00Rwz/z9Ecjdox8uwAACkGSkKIaGlAAAAAAElFTkSuQmCC',
-            },
-            {
-              label: 'Android',
-              key: 0,
-              type: 'packages',
-              icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAUCAIAAACMMcMmAAAAKklEQVRIx2NgGAWjgAbAh/aI4S7t0agdI9COzx00Rwz/z9Ecjdox8uwAACkGSkKIaGlAAAAAAElFTkSuQmCC',
-            },
-            {
-              label: 'Mac OS',
-              key: 0,
-              type: 'packages',
-              icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAUCAIAAACMMcMmAAAAKklEQVRIx2NgGAWjgAbAh/aI4S7t0agdI9COzx00Rwz/z9Ecjdox8uwAACkGSkKIaGlAAAAAAElFTkSuQmCC',
-            },
-            {
-              label: 'Linux',
-              key: 0,
-              type: 'packages',
-              icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAUCAIAAACMMcMmAAAAKklEQVRIx2NgGAWjgAbAh/aI4S7t0agdI9COzx00Rwz/z9Ecjdox8uwAACkGSkKIaGlAAAAAAElFTkSuQmCC',
-            },
-          ]} />
-        <br />
-        <br />
-        {/* <Toggle defaultChecked>Allow Comments</Toggle> */}
+          disabled
+          defaultValue={constants.box.osList[boxInfo.os].name}
+        />
         <Toggle>Private</Toggle>
       </form>
-      <br />
-      {/* <h3>Advanced</h3>
-      <Button icon={DownloadIcon}>Export Data as CSV</Button>
-      <br />
-      <Button icon={DownloadIcon}>Export Data as JSON</Button>
-      <br />
+      <h3>Advanced</h3>
+      <Button icon={DownloadIcon}>Export Data</Button>
       <br />
       <Button
         icon={RemoveIcon}
         danger
       >
-        {'Delete Account'}
-      </Button> */}
+        {'Delete Box'}
+      </Button>
+      <br />
+      <br />
       <ButtonSet>
-        <Button blue>{'Apply changes'}</Button>
+        <Button blue>{'Save changes'}</Button>
         <Button>{'Cancel'}</Button>
       </ButtonSet>
     </>
