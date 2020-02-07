@@ -11,6 +11,30 @@ export default function TabFavorites(props) {
         href: '#'
       }}
       />
+      <br/>
+      <UserCard user={{
+        login: '20 envs',
+        name: 'karl_laane',
+        avatarUrl: 'https://simonwiddowson.typepad.com/files/grass-360x360.jpg',
+        href: '#'
+      }}
+      />
+      <br/>
+      <UserCard user={{
+        login: '9 envs',
+        name: 'amanda_hodges',
+        avatarUrl: 'https://www.caribjournal.com/wp-content/uploads/2018/07/gr-360x360.jpg',
+        href: '#'
+      }}
+      />
+      <br/>
+      <UserCard user={{
+        login: '25 envs',
+        name: 'jack_randall',
+        avatarUrl: 'https://www.vanadiumcorp.com/wp-content/uploads/2020/01/Competition-energy-storage-1536x1536-500-360x360.jpg',
+        href: '#'
+      }}
+      />
     </>
   );
 }
