@@ -16,7 +16,7 @@ export default class TabFavorites extends Component {
 
     return (
       <List
-        maxHeight={400}
+        maxHeight={500}
         data={this.getHistoryList()}
         compact
       />

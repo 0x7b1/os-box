@@ -35,6 +35,22 @@ export default function TabFavorites(props) {
         href: '#'
       }}
       />
+      <br/>
+      <UserCard user={{
+        login: '6 envs',
+        name: 'josh_churchill',
+        avatarUrl: 'https://www.de-cix.net/Files/b6dfb34adbbbdb325593ee3f297e21a31d94adab/IX-API_Logo_V2_RGB-942x942-360x360.jpg',
+        href: '#'
+      }}
+      />
+      <br/>
+      <UserCard user={{
+        login: '2 envs',
+        name: 'mary_slater',
+        avatarUrl: 'https://www.caribjournal.com/wp-content/uploads/2018/01/best-islands-360x360.jpg',
+        href: '#'
+      }}
+      />
     </>
   );
 }
