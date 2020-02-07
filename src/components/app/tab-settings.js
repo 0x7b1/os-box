@@ -17,7 +17,7 @@ export default function TabSettings(props) {
 
   return (
     <>
-      <h3>Box Settings</h3>
+      <h1>Box Settings</h1>
       <form className="inputs">
         <Input
           label="Box Name"
@@ -30,7 +30,7 @@ export default function TabSettings(props) {
         />
         <Toggle>Private</Toggle>
       </form>
-      <h3>Advanced</h3>
+      <h1>Advanced</h1>
       <Button icon={DownloadIcon}>Export Data</Button>
       <br />
       <Button
