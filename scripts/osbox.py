@@ -487,8 +487,8 @@ class Alfred:
         while True:
             tableData = []
 
-            tableData.append("Developer")
-            tableData.append("General developer package.")
+            tableData.append("Pipedrive Developer")
+            tableData.append("General developer package for Pipedrive.")
 
             table = Zenity.packageTable(tableData)
 
