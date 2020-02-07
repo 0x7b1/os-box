@@ -1,19 +1,7 @@
 import React, { Component } from "react";
 import { Grid, Row, Col } from "@jetbrains/ring-ui/components/grid/grid";
-import Heading, {
-  H1,
-  H2,
-  H3,
-  H4
-} from "@jetbrains/ring-ui/components/heading/heading";
-import Dialog from "@jetbrains/ring-ui/components/dialog/dialog";
-import { Header, Content } from "@jetbrains/ring-ui/components/island/island";
-import Select from "@jetbrains/ring-ui/components/select/select";
-import Button from "@jetbrains/ring-ui/components/button/button";
-import ButtonSet from "@jetbrains/ring-ui/components/button-set/button-set";
-import Toggle from "@jetbrains/ring-ui/components/toggle/toggle";
 
-import constants from "../../lib/constants";
+import constants from '../../lib/constants';
 
 import EnvList from "./env-list";
 import EnvInfo from "./env-info";
@@ -21,6 +9,7 @@ import AppHeader from "./app-header";
 import DialogBox from "./dialog-box";
 import DialogPackage from "./dialog-package";
 import DialogScreenshot from "./dialog-screenshot";
+import sampleData from "./sample-data";
 
 export default class AppRoot extends Component {
   state = {
@@ -33,105 +22,7 @@ export default class AppRoot extends Component {
       info: "Developer at Pipedrive",
       avatar: "https://avatars0.githubusercontent.com/u/2180529?s=460&v=4"
     },
-    boxList: [
-      {
-        name: "My Phone",
-        os: constants.box.osList.ANDROID.id,
-        isPrivate: false,
-        starsCount: 10,
-        packages: [
-          'INSTAGRAM',
-          'MESSENGER',
-          'SHAZAM',
-          'SNAPCHAT',
-          'TIKTOK',
-        ],
-        scriptFiles: [
-          {
-            filename: "i3config0.sh",
-            language: "bash",
-            content: `
-              #!/bin/bash
-
-              ./symlink.sh
-              ./aptinstall.sh
-              ./programs.sh
-              ./desktop.sh
-
-              # Get all upgrades
-              sudo apt upgrade -y
-
-              # See our bash changes
-              source ~/.bashrc
-
-              # Fun hello
-              figlet "... and we're back!" | lolcat`
-          },
-          {
-            filename: "mycredentials.json",
-            language: "json",
-            content: `
-              {
-                "type": "user",
-                "id": "7c78428f-7334-4885-a247-135ab0b17c3b",
-                "name": "Carsten Ringe",
-                "login": "cringe",
-                "profile": {
-                  "avatar": {
-                    "type": "defaultavatar",
-                    "url": "https://hub.jetbrains.com/api/rest/avatar/7c78428f-7334-4885-a247-135ab0b17c3b"
-                  }
-                },
-                "key": "7c78428f-7334-4885-a247-135ab0b17c3b",
-                "label": "Carsten Ringe",
-                "avatar": "https://hub.jetbrains.com/api/rest/avatar/7c78428f-7334-4885-a247-135ab0b17c3b",
-                "description": "cringe"
-              }`
-          }
-        ],
-        screenshots: [
-          "https://www.androidpolice.com/wp-content/uploads/2019/03/Screenshot_20190313-160401.jpg",
-          "https://media.idownloadblog.com/wp-content/uploads/2017/08/ScreenshotXI.jpg"
-        ],
-        history: [
-          {
-            event: "Uploaded a screenshot",
-            date: "01/04/2020 20:22"
-          },
-          {
-            event: "Added Visual Studio Code",
-            date: "01/05/2020 18:19"
-          },
-          {
-            event: "Added IntelliJ",
-            date: "01/04/2020 16:20"
-          },
-          {
-            event: "Added Telegram",
-            date: "01/04/2020 15:15"
-          },
-          {
-            event: "Added qBitTorrent",
-            date: "01/04/2020 15:12"
-          },
-          {
-            event: "New installation made on a new machine",
-            date: "01/03/2020 12:38"
-          },
-          {
-            event: "Added Microsoft Office",
-            date: "01/02/2020 12:38"
-          },
-          {
-            event: "Creation of this box!",
-            date: "01/02/2020 12:34"
-          }
-        ],
-        favorites: []
-      },
-      this.createNewBox(constants.box.osList.WINDOWS.id, "Pipedrive PC"),
-      this.createNewBox(constants.box.osList.LINUX.id, "Home Desktop")
-    ]
+    boxList: sampleData,
   };
 
   onCloseDialog = () => {
