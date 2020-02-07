@@ -48,5 +48,40 @@
     "name": "Uber",
     "description": "Everyone private driver",
     "icon": "mobileicons/uber.webp"
+  },
+  {
+    "name": "Coursera",
+    "description": "Learn anywhere from Coursera",
+    "icon": "mobileicons/coursera.png"
+  },
+  {
+    "name": "Netflix",
+    "description": "TV shows and movies streaming on your phone",
+    "icon": "mobileicons/netflix.png"
+  },
+  {
+    "name": "Twitch",
+    "description": "Watch livestreaming videos",
+    "icon": "mobileicons/twitch.png"
+  },
+  {
+    "name": "Duolingo",
+    "description": "Learn languages free",
+    "icon": "mobileicons/duolingo.png"
+  },
+  {
+    "name": "Golf Battle",
+    "description": "Challenge real players in golf",
+    "icon": "mobileicons/golfbattle.png"
+  },
+  {
+    "name": "Word Chums",
+    "description": "Word puzzle game",
+    "icon": "mobileicons/wordchums.png"
+  },
+  {
+    "name": "Dragons: Titan Uprising",
+    "description": "Puzzle game",
+    "icon": "mobileicons/dragons.png"
   }
 ]
