@@ -95,9 +95,8 @@ export default class AppRoot extends Component {
             filename: 'genscript.py',
             language: 'python',
             content: `
-              class Foo:
-    ...
-    def get(self, files):
+class Foo:
+   def get(self, files):
         yield from roundrobin(*files)
 
 # calling code:
@@ -109,7 +108,24 @@ with ExitStack() as stack:
     files = [stack.enter_context(open(fname)) for fname in filenames]
     for line in foo.get(files):
         do_something_with_line(line)x`
-          }
+          },
+          {
+            filename: 'codei9rprog.sh',
+            language: 'bash',
+            content: `
+git remote -v
+# View existing remotes
+# origin  https://github.com/user/repo.git (fetch)
+# origin  https://github.com/user/repo.git (push)
+
+git remote set-url origin https://github.com/user/repo2.git
+# Change the 'origin' remote's URL
+
+git remote -v
+# Verify new remote URL
+# origin  https://github.com/user/repo2.git (fetch)
+# origin  https://github.com/user/repo2.git (push)`
+          },
         ],
         screenshots: [
           'https://www.androidpolice.com/wp-content/uploads/2019/03/Screenshot_20190313-160401.jpg',
