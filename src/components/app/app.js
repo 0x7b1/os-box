@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import { Grid, Row, Col } from "@jetbrains/ring-ui/components/grid/grid";
+import React, { Component } from 'react';
+import { Grid, Row, Col } from '@jetbrains/ring-ui/components/grid/grid';
 
 import constants from '../../lib/constants';
 
-import EnvList from "./env-list";
-import EnvInfo from "./env-info";
-import AppHeader from "./app-header";
-import DialogBox from "./dialog-box";
-import DialogPackage from "./dialog-package";
-import DialogScreenshot from "./dialog-screenshot";
-import sampleData from "./sample-data";
+import EnvList from './env-list';
+import EnvInfo from './env-info';
+import AppHeader from './app-header';
+import DialogBox from './dialog-box';
+import DialogPackage from './dialog-package';
+import DialogScreenshot from './dialog-screenshot';
+import sampleData from './sample-data';
 
 export default class AppRoot extends Component {
   state = {
@@ -18,10 +18,10 @@ export default class AppRoot extends Component {
     selectedBoxIndex: 0,
     userData: {
 
-      name: "Martin Starr",
-      username: "@0x7b1",
-      info: "Developer at Pipedrive",
-      avatar: "https://i.ibb.co/ykR6ss7/gilfoyle.jpg"
+      name: 'Martin Starr',
+      username: '@0x7b1',
+      info: 'Developer at Pipedrive',
+      avatar: 'https://i.ibb.co/ykR6ss7/gilfoyle.jpg'
 
     },
     boxList: sampleData,

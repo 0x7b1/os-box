@@ -24,16 +24,16 @@ Firebase.initializeApp(firebaseConfig);
 let db = Firebase.firestore();
 
 /* db.collection("collection-name")
-      .doc("document-name")
-      .set({
-        property: "",
-        })
-        .then(function() {
-          console.log("Document successfully written!");
-        })
-        .catch(function(error) {
-          console.error("Error writing document: ", error);
-        });
+  .doc("document-name")
+  .set({
+    property: "",
+    })
+    .then(function() {
+      console.log("Document successfully written!");
+    })
+    .catch(function(error) {
+      console.error("Error writing document: ", error);
+    });
 */
 
 const appEl = document.querySelector(".app-root");
