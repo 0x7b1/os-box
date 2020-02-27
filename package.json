@@ -7,6 +7,8 @@
     "dist": "./dist"
   },
   "scripts": {
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -b master -d docs",
     "create-component": "yo @jetbrains/ring-ui:react --path $npm_package_config_components",
     "build": "webpack --mode=production --devtool sourcemap",
     "test": "karma start",
@@ -15,6 +17,7 @@
     "ci-test": "npm run lint && xvfb-maybe karma start --teamcity",
     "start": "webpack-dev-server -d --history-api-fallback --inline --hot --colors --port 9010"
   },
+  "homepage": "https://0x7b1.github.io/os-box/",
   "babel": {
     "presets": [
       [
@@ -36,6 +39,7 @@
     "copy-webpack-plugin": "5.0.0",
     "css-loader": "2.1.1",
     "firebase": "^7.8.0",
+    "gh-pages": "^2.2.0",
     "html-loader": "0.5.5",
     "html-webpack-plugin": "3.2.0",
     "json-loader": "0.5.7",
