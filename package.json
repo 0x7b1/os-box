@@ -7,8 +7,6 @@
     "dist": "./dist"
   },
   "scripts": {
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -b master -d docs",
     "create-component": "yo @jetbrains/ring-ui:react --path $npm_package_config_components",
     "build": "webpack --mode=production --devtool sourcemap",
     "test": "karma start",
